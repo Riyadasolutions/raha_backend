@@ -1,0 +1,206 @@
+{
+  "documentCategories": [
+    "التقرير الطبي",
+    "الهوية / الإقامة",
+    "الوصفة الطبية",
+    "التقارير المساندة",
+    "مستند آخر"
+  ],
+  "fileRules": {
+    "maxBytes": 5242880,
+    "accept": [
+      "application/pdf",
+      "image/jpeg",
+      "image/png"
+    ],
+    "acceptLabel": "PDF, JPG, PNG — بحد أقصى ٥ م.ب"
+  },
+  "medicalFields": [
+    {
+      "key": "condition",
+      "label": "الحالة الصحية",
+      "type": "textarea",
+      "tbd": true
+    },
+    {
+      "key": "diagnosis",
+      "label": "التشخيص",
+      "tbd": true,
+      "help": "اكتب التشخيص كما ورد في التقرير الطبي، وسيراجعه الأخصائي الطبي."
+    },
+    {
+      "key": "hospital",
+      "label": "اسم المستشفى / المنشأة الصحية",
+      "tbd": true
+    },
+    {
+      "key": "doctor",
+      "label": "اسم الطبيب",
+      "tbd": true
+    }
+  ],
+  "registrationSteps": [
+    {
+      "title": "البيانات الشخصية",
+      "fields": [
+        {
+          "key": "firstName",
+          "label": "الاسم الأول",
+          "required": true
+        },
+        {
+          "key": "fatherName",
+          "label": "اسم الأب",
+          "required": true
+        },
+        {
+          "key": "grandName",
+          "label": "اسم الجد",
+          "required": true
+        },
+        {
+          "key": "familyName",
+          "label": "اسم العائلة",
+          "required": true
+        },
+        {
+          "key": "nationalId",
+          "label": "رقم الهوية / الإقامة",
+          "required": true
+        },
+        {
+          "key": "birthDate",
+          "label": "تاريخ الميلاد",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "gender",
+          "label": "الجنس",
+          "type": "select",
+          "options": [
+            "ذكر",
+            "أنثى"
+          ],
+          "required": true
+        },
+        {
+          "key": "nationality",
+          "label": "الجنسية",
+          "type": "select",
+          "options": [
+            "سعودي",
+            "غير سعودي"
+          ],
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "بيانات التواصل",
+      "fields": [
+        {
+          "key": "mobile",
+          "label": "رقم الجوال",
+          "type": "tel",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "البريد الإلكتروني",
+          "type": "email"
+        },
+        {
+          "key": "city",
+          "label": "المدينة",
+          "type": "select",
+          "options": [
+            "الرياض",
+            "جدة",
+            "مكة المكرمة",
+            "الدمام",
+            "الطائف"
+          ],
+          "required": true
+        },
+        {
+          "key": "district",
+          "label": "الحي",
+          "required": true
+        },
+        {
+          "key": "address",
+          "label": "العنوان",
+          "type": "textarea"
+        }
+      ]
+    }
+  ],
+  "requestApplicantFields": [
+    {
+      "key": "name",
+      "label": "اسم المستفيد",
+      "required": true
+    },
+    {
+      "key": "nationalId",
+      "label": "رقم الهوية / الإقامة",
+      "required": true,
+      "locked": true
+    },
+    {
+      "key": "mobile",
+      "label": "رقم الجوال",
+      "type": "tel",
+      "required": true
+    },
+    {
+      "key": "birthDate",
+      "label": "تاريخ الميلاد",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "gender",
+      "label": "الجنس",
+      "type": "select",
+      "options": [
+        "ذكر",
+        "أنثى"
+      ],
+      "required": true
+    },
+    {
+      "key": "nationality",
+      "label": "الجنسية",
+      "type": "select",
+      "options": [
+        "سعودي",
+        "غير سعودي"
+      ]
+    },
+    {
+      "key": "city",
+      "label": "المدينة",
+      "type": "select",
+      "options": [
+        "الرياض",
+        "جدة",
+        "مكة المكرمة",
+        "الدمام",
+        "الطائف"
+      ],
+      "required": true
+    },
+    {
+      "key": "district",
+      "label": "الحي",
+      "required": true
+    },
+    {
+      "key": "address",
+      "label": "العنوان",
+      "type": "textarea"
+    }
+  ]
+}

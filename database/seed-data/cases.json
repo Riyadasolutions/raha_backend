@@ -1,0 +1,746 @@
+{
+  "seedCases": [
+    {
+      "id": "REQ-000123",
+      "beneficiaryId": "BEN-00438",
+      "workflowId": "phase1-medical",
+      "beneficiary": "فاطمة محمد القحطاني",
+      "nationalId": "10•••••482",
+      "city": "الرياض",
+      "service": "تمريض منزلي",
+      "date": "٠٩ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-09T18:19:30.709Z",
+      "updatedAt": "2026-11-09T18:19:30.730Z",
+      "updated": "٠٩ نوفمبر ٢٠٢٦",
+      "stage": "التدقيق",
+      "assignee": "محمد الحربي",
+      "status": "new",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000123-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "فاطمة محمد القحطاني",
+          "visibility": "both",
+          "at": "2026-11-09T18:19:30.709Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000123-a1",
+          "at": "2026-11-09T18:19:30.709Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000123-a2",
+          "at": "2026-11-09T18:19:30.709Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "priority": true
+    },
+    {
+      "id": "REQ-000122",
+      "beneficiaryId": "BEN-00437",
+      "workflowId": "phase1-medical",
+      "beneficiary": "سعد عبدالله الشهري",
+      "nationalId": "10•••••195",
+      "city": "جدة",
+      "service": "علاج طبيعي",
+      "date": "٠٨ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-08T18:19:30.730Z",
+      "updatedAt": "2026-11-09T18:19:30.730Z",
+      "updated": "٠٩ نوفمبر ٢٠٢٦",
+      "stage": "المراجعة الطبية",
+      "assignee": "د. نورة القحطاني",
+      "status": "medical_review",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000122-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "سعد عبدالله الشهري",
+          "visibility": "both",
+          "at": "2026-11-08T18:19:30.730Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000122-a1",
+          "at": "2026-11-08T18:19:30.730Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000122-a2",
+          "at": "2026-11-08T18:19:30.730Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ]
+    },
+    {
+      "id": "REQ-000121",
+      "beneficiaryId": "BEN-00436",
+      "workflowId": "phase1-medical",
+      "beneficiary": "مريم علي الغامدي",
+      "nationalId": "21•••••730",
+      "city": "مكة المكرمة",
+      "service": "رعاية الجروح",
+      "date": "٠٨ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-08T18:19:30.731Z",
+      "updatedAt": "2026-11-09T18:19:30.731Z",
+      "updated": "٠٩ نوفمبر ٢٠٢٦",
+      "stage": "الدراسة الاجتماعية",
+      "assignee": "ريم الشهري",
+      "status": "social_review",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000121-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "مريم علي الغامدي",
+          "visibility": "both",
+          "at": "2026-11-08T18:19:30.731Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000121-a1",
+          "at": "2026-11-08T18:19:30.731Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000121-a2",
+          "at": "2026-11-08T18:19:30.731Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ]
+    },
+    {
+      "id": "REQ-000120",
+      "beneficiaryId": "BEN-00435",
+      "workflowId": "phase1-medical",
+      "beneficiary": "حمد صالح العتيبي",
+      "nationalId": "10•••••914",
+      "city": "الرياض",
+      "service": "زيارة طبيب",
+      "date": "٠٧ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-07T18:19:30.731Z",
+      "updatedAt": "2026-11-08T18:19:30.731Z",
+      "updated": "٠٨ نوفمبر ٢٠٢٦",
+      "stage": "اعتماد المدير",
+      "assignee": "خالد الدوسري",
+      "status": "manager_approval",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000120-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "حمد صالح العتيبي",
+          "visibility": "both",
+          "at": "2026-11-07T18:19:30.731Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000120-a1",
+          "at": "2026-11-07T18:19:30.731Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000120-a2",
+          "at": "2026-11-07T18:19:30.731Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ]
+    },
+    {
+      "id": "REQ-000119",
+      "beneficiaryId": "BEN-00434",
+      "workflowId": "phase1-medical",
+      "beneficiary": "نوف أحمد المطيري",
+      "nationalId": "10•••••602",
+      "city": "الدمام",
+      "service": "غسيل كلى منزلي",
+      "date": "٠٦ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-06T18:19:30.732Z",
+      "updatedAt": "2026-11-07T18:19:30.732Z",
+      "updated": "٠٧ نوفمبر ٢٠٢٦",
+      "stage": "تقديم الخدمة",
+      "assignee": "الفريق الطبي 01",
+      "status": "in_progress",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "verificationCode": "482913",
+      "documents": [
+        {
+          "id": "REQ-000119-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "نوف أحمد المطيري",
+          "visibility": "both",
+          "at": "2026-11-06T18:19:30.732Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000119-a1",
+          "at": "2026-11-06T18:19:30.732Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000119-a2",
+          "at": "2026-11-06T18:19:30.732Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي",
+      "appointment": {
+        "date": "2026-11-09",
+        "time": "10:30",
+        "location": "منزل المستفيد — الرياض، حي الياسمين",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "REQ-000118",
+      "beneficiaryId": "BEN-00433",
+      "workflowId": "phase1-medical",
+      "beneficiary": "إبراهيم حسن الزهراني",
+      "nationalId": "10•••••228",
+      "city": "الطائف",
+      "service": "علاج طبيعي",
+      "date": "٠٥ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-05T18:19:30.732Z",
+      "updatedAt": "2026-11-06T18:19:30.732Z",
+      "updated": "٠٦ نوفمبر ٢٠٢٦",
+      "stage": "الأرشفة",
+      "assignee": "النظام",
+      "status": "archived",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000118-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "إبراهيم حسن الزهراني",
+          "visibility": "both",
+          "at": "2026-11-05T18:19:30.732Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000118-a1",
+          "at": "2026-11-05T18:19:30.732Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000118-a2",
+          "at": "2026-11-05T18:19:30.732Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي"
+    },
+    {
+      "id": "REQ-000117",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "تمريض منزلي",
+      "date": "٠٩ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-09T18:19:30.733Z",
+      "updatedAt": "2026-11-09T18:19:30.733Z",
+      "updated": "٠٩ نوفمبر ٢٠٢٦",
+      "stage": "التدقيق",
+      "assignee": "محمد الحربي",
+      "status": "new",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000117-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-11-09T18:19:30.733Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000117-a1",
+          "at": "2026-11-09T18:19:30.733Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000117-a2",
+          "at": "2026-11-09T18:19:30.733Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ]
+    },
+    {
+      "id": "REQ-000116",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "علاج طبيعي",
+      "date": "٠٧ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-07T18:19:30.733Z",
+      "updatedAt": "2026-11-08T18:19:30.733Z",
+      "updated": "٠٨ نوفمبر ٢٠٢٦",
+      "stage": "المراجعة الطبية",
+      "assignee": "د. نورة القحطاني",
+      "status": "medical_review",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000116-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-11-07T18:19:30.733Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000116-a1",
+          "at": "2026-11-07T18:19:30.733Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000116-a2",
+          "at": "2026-11-07T18:19:30.733Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ]
+    },
+    {
+      "id": "REQ-000115",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "رعاية الجروح",
+      "date": "٠٦ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-06T18:19:30.734Z",
+      "updatedAt": "2026-11-07T18:19:30.734Z",
+      "updated": "٠٧ نوفمبر ٢٠٢٦",
+      "stage": "المستفيد",
+      "assignee": "المستفيد",
+      "status": "returned",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000115-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-11-06T18:19:30.734Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000115-a1",
+          "at": "2026-11-06T18:19:30.734Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000115-a2",
+          "at": "2026-11-06T18:19:30.734Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "returnInfo": {
+        "reason": "تقرير طبي غير واضح / غير حديث",
+        "notes": "يرجى إرفاق تقرير طبي حديث لا يتجاوز ٣ أشهر.",
+        "date": "2026-11-08T18:19:30.734Z",
+        "fromStatus": "new",
+        "byRole": "مدقق الطلبات",
+        "fields": [
+          "التقرير الطبي"
+        ]
+      }
+    },
+    {
+      "id": "REQ-000114",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "زيارة طبيب",
+      "date": "٠٤ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-04T18:19:30.734Z",
+      "updatedAt": "2026-11-05T18:19:30.734Z",
+      "updated": "٠٥ نوفمبر ٢٠٢٦",
+      "stage": "التعيين",
+      "assignee": "الفريق الطبي 01",
+      "status": "assigned",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000114-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-11-04T18:19:30.734Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000114-a1",
+          "at": "2026-11-04T18:19:30.734Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000114-a2",
+          "at": "2026-11-04T18:19:30.734Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي"
+    },
+    {
+      "id": "REQ-000113",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "تمريض منزلي",
+      "date": "٠٢ نوفمبر ٢٠٢٦",
+      "createdAt": "2026-11-02T18:19:30.735Z",
+      "updatedAt": "2026-11-03T18:19:30.735Z",
+      "updated": "٠٣ نوفمبر ٢٠٢٦",
+      "stage": "تقديم الخدمة",
+      "assignee": "الفريق الطبي 01",
+      "status": "scheduled",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "verificationCode": "482913",
+      "documents": [
+        {
+          "id": "REQ-000113-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-11-02T18:19:30.735Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000113-a1",
+          "at": "2026-11-02T18:19:30.735Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000113-a2",
+          "at": "2026-11-02T18:19:30.735Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي",
+      "appointment": {
+        "date": "2026-11-12",
+        "time": "10:30",
+        "location": "منزل المستفيد — الرياض، حي الياسمين",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "REQ-000112",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "علاج طبيعي",
+      "date": "٢٨ أكتوبر ٢٠٢٦",
+      "createdAt": "2026-10-28T18:19:30.736Z",
+      "updatedAt": "2026-10-29T18:19:30.736Z",
+      "updated": "٢٩ أكتوبر ٢٠٢٦",
+      "stage": "علاقات المرضى",
+      "assignee": "هدى الزهراني",
+      "status": "completed",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "verificationCode": "482913",
+      "documents": [
+        {
+          "id": "REQ-000112-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-10-28T18:19:30.736Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000112-a1",
+          "at": "2026-10-28T18:19:30.736Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000112-a2",
+          "at": "2026-10-28T18:19:30.736Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي",
+      "appointment": {
+        "date": "2026-11-07",
+        "time": "10:30",
+        "location": "منزل المستفيد — الرياض، حي الياسمين",
+        "status": "visited"
+      }
+    },
+    {
+      "id": "REQ-000111",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "غسيل كلى منزلي",
+      "date": "١٠ أكتوبر ٢٠٢٦",
+      "createdAt": "2026-10-10T18:19:30.736Z",
+      "updatedAt": "2026-10-11T18:19:30.736Z",
+      "updated": "١١ أكتوبر ٢٠٢٦",
+      "stage": "الأرشفة",
+      "assignee": "النظام",
+      "status": "archived",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000111-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-10-10T18:19:30.736Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000111-a1",
+          "at": "2026-10-10T18:19:30.736Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000111-a2",
+          "at": "2026-10-10T18:19:30.736Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "provider": "الفريق الطبي 01",
+      "assignmentType": "فريق طبي داخلي",
+      "appointment": {
+        "date": "2026-10-15",
+        "time": "10:30",
+        "location": "منزل المستفيد — الرياض، حي الياسمين",
+        "status": "visited"
+      },
+      "serviceConfirmed": true,
+      "evaluation": {
+        "rating": 5,
+        "comment": "خدمة ممتازة",
+        "at": "2026-10-16T18:19:30.736Z"
+      }
+    },
+    {
+      "id": "REQ-000110",
+      "beneficiaryId": "BEN-0001",
+      "workflowId": "phase1-medical",
+      "beneficiary": "أحمد محمد السبيعي",
+      "nationalId": "10•••••321",
+      "city": "الرياض",
+      "service": "زيارة طبيب",
+      "date": "٣٠ سبتمبر ٢٠٢٦",
+      "createdAt": "2026-09-30T18:19:30.737Z",
+      "updatedAt": "2026-10-01T18:19:30.737Z",
+      "updated": "٠١ أكتوبر ٢٠٢٦",
+      "stage": "مرفوض",
+      "assignee": "—",
+      "status": "rejected",
+      "description": "الحاجة إلى متابعة منزلية وفق التقرير الطبي المرفق.",
+      "comments": [],
+      "documents": [
+        {
+          "id": "REQ-000110-d1",
+          "name": "التقرير_الطبي.pdf",
+          "category": "التقرير الطبي",
+          "type": "PDF",
+          "size": 420000,
+          "uploadedBy": "أحمد محمد السبيعي",
+          "visibility": "both",
+          "at": "2026-09-30T18:19:30.737Z"
+        }
+      ],
+      "activities": [
+        {
+          "id": "REQ-000110-a1",
+          "at": "2026-09-30T18:19:30.737Z",
+          "text": "تم استلام طلبك بنجاح.",
+          "actor": "المستفيد عبر البوابة",
+          "visibility": "both"
+        },
+        {
+          "id": "REQ-000110-a2",
+          "at": "2026-09-30T18:19:30.737Z",
+          "text": "تم إسناد الطلب للتدقيق",
+          "actor": "النظام",
+          "visibility": "internal"
+        }
+      ],
+      "rejectReason": "خارج نطاق عمل الجمعية"
+    }
+  ],
+  "demoQuotationCase": {
+    "id": "REQ-DEMO-0001",
+    "beneficiaryId": "BEN-DEMO-01",
+    "workflowId": "phase1-medical",
+    "beneficiary": "[DEMO] مستفيد تجريبي — اختبار التسعير",
+    "nationalId": "10•••••000",
+    "city": "الرياض",
+    "service": "تمريض منزلي",
+    "date": "٠٩ نوفمبر ٢٠٢٦",
+    "createdAt": "2026-11-09T18:19:30.765Z",
+    "updatedAt": "2026-11-09T18:19:30.766Z",
+    "updated": "٠٩ نوفمبر ٢٠٢٦",
+    "stage": "التسعير",
+    "assignee": "د. نورة القحطاني",
+    "status": "awaiting_quotation",
+    "description": "[DEMO] طلب تجريبي لاختبار مسار اللجنة الطبية ومقدمي الخدمة فقط — ليس طلبًا حقيقيًا.",
+    "comments": [],
+    "documents": [
+      {
+        "id": "REQ-DEMO-0001-d1",
+        "name": "التقرير_الطبي.pdf",
+        "category": "التقرير الطبي",
+        "type": "PDF",
+        "size": 420000,
+        "uploadedBy": "[DEMO] مستفيد تجريبي — اختبار التسعير",
+        "visibility": "both",
+        "at": "2026-11-09T18:19:30.765Z"
+      }
+    ],
+    "activities": [
+      {
+        "id": "REQ-DEMO-0001-a1",
+        "at": "2026-11-09T18:19:30.765Z",
+        "text": "[DEMO] أُنشئ هذا السجل التجريبي مباشرة في مرحلة التسعير لأغراض الاختبار؛ لا توجد قرارات سابقة مسجلة.",
+        "actor": "النظام (بيانات تجريبية)",
+        "visibility": "internal"
+      }
+    ],
+    "serviceId": "SRV-001"
+  },
+  "demoQuotationCaseId": "REQ-DEMO-0001"
+}

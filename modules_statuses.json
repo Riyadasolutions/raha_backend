@@ -1,0 +1,17 @@
+{
+    "Probe": true,
+    "Auth": true,
+    "Access": true,
+    "Users": true,
+    "Audit": true,
+    "Notifications": true,
+    "Settings": true,
+    "Catalog": true,
+    "Beneficiaries": true,
+    "Cases": true,
+    "Visits": true,
+    "Quotations": true,
+    "Finance": true,
+    "Authorizations": true,
+    "Reports": true
+}

@@ -1,0 +1,60 @@
+{
+  "roundId": "QR-DEMO-0001",
+  "round": {
+    "id": "QR-DEMO-0001",
+    "caseId": "REQ-DEMO-0001",
+    "requestNumber": "REQ-DEMO-0001",
+    "service": "تمريض منزلي",
+    "serviceId": "SRV-001",
+    "subservice": "[DEMO] زيارات تمريضية",
+    "specifications": "[DEMO] زيارات تمريض منزلي للمتابعة — بيانات تجريبية للاختبار فقط.",
+    "description": "[DEMO] يرجى تقديم عرض سعر تجريبي لاختبار المسار.",
+    "quantity": 10,
+    "unit": "جلسة",
+    "city": "الرياض",
+    "area": "حي الياسمين",
+    "expectedStart": "2026-11-19",
+    "deadline": "2026-11-23T18:19:30.827Z",
+    "providerNotes": "[DEMO] عرض تجريبي — لا يمثل طلبًا حقيقيًا.",
+    "sharedAttachments": [],
+    "status": "open",
+    "invitations": [
+      {
+        "id": "INV-DEMO-PRV-0005",
+        "quotationRoundId": "QR-DEMO-0001",
+        "providerId": "PRV-0005",
+        "providerName": "مركز عناية للرعاية المنزلية",
+        "status": "invited",
+        "sentAt": "2026-11-09T18:19:30.826Z"
+      },
+      {
+        "id": "INV-DEMO-PRV-0001",
+        "quotationRoundId": "QR-DEMO-0001",
+        "providerId": "PRV-0001",
+        "providerName": "مجمع التعافي الطبي",
+        "status": "invited",
+        "sentAt": "2026-11-09T18:19:30.826Z"
+      },
+      {
+        "id": "INV-DEMO-PRV-0006",
+        "quotationRoundId": "QR-DEMO-0001",
+        "providerId": "PRV-0006",
+        "providerName": "مركز الأمل للرعاية المنزلية",
+        "status": "invited",
+        "sentAt": "2026-11-09T18:19:30.826Z"
+      }
+    ],
+    "quotations": [],
+    "createdBy": "النظام (بيانات تجريبية)",
+    "createdById": "system-demo",
+    "createdAt": "2026-11-09T18:19:30.826Z",
+    "updatedAt": "2026-11-09T18:19:30.826Z",
+    "history": [
+      {
+        "at": "2026-11-09T18:19:30.826Z",
+        "by": "النظام (بيانات تجريبية)",
+        "text": "[DEMO] أُنشئ طلب تسعير تجريبي وأُرسلت دعوات إلى PRV-0005 وPRV-0001 وPRV-0006"
+      }
+    ]
+  }
+}

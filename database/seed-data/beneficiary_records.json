@@ -1,0 +1,126 @@
+{
+  "beneficiaryRecordSeeds": [
+    {
+      "id": "BEN-00438",
+      "nationalId": "1048213482",
+      "mobile": "0551840942",
+      "birthDate": "1958-03-11",
+      "gender": "أنثى",
+      "nationality": "سعودية",
+      "email": "fatimah@example.com",
+      "district": "النرجس",
+      "address": "شارع أبي بكر الصديق، فيلا 8",
+      "status": "active",
+      "createdAt": "2026-04-23T18:19:30.874Z"
+    },
+    {
+      "id": "BEN-00437",
+      "nationalId": "1037719195",
+      "mobile": "0563309143",
+      "birthDate": "1949-07-02",
+      "gender": "ذكر",
+      "nationality": "سعودي",
+      "email": "saad@example.com",
+      "district": "الصفا",
+      "address": "طريق الأمير ماجد، مبنى 3",
+      "status": "active",
+      "createdAt": "2026-05-13T18:19:30.874Z"
+    },
+    {
+      "id": "BEN-00436",
+      "nationalId": "2104588730",
+      "mobile": "0598812044",
+      "birthDate": "1966-11-20",
+      "gender": "أنثى",
+      "nationality": "يمنية",
+      "email": "",
+      "district": "العزيزية",
+      "address": "شارع العزيزية العام",
+      "status": "active",
+      "createdAt": "2026-06-02T18:19:30.874Z"
+    },
+    {
+      "id": "BEN-00435",
+      "nationalId": "1029904914",
+      "mobile": "0507712245",
+      "birthDate": "1940-01-15",
+      "gender": "ذكر",
+      "nationality": "سعودي",
+      "email": "",
+      "district": "الملقا",
+      "address": "شارع أنس بن مالك",
+      "status": "inactive",
+      "createdAt": "2026-06-22T18:19:30.874Z"
+    },
+    {
+      "id": "BEN-00434",
+      "nationalId": "1091127602",
+      "mobile": "0541123346",
+      "birthDate": "1972-09-09",
+      "gender": "أنثى",
+      "nationality": "سعودية",
+      "email": "nouf@example.com",
+      "district": "الشاطئ",
+      "address": "طريق الخليج، مبنى 21",
+      "status": "active",
+      "createdAt": "2026-07-12T18:19:30.874Z"
+    },
+    {
+      "id": "BEN-00433",
+      "nationalId": "1013340228",
+      "mobile": "0533347747",
+      "birthDate": "1955-05-30",
+      "gender": "ذكر",
+      "nationality": "سعودي",
+      "email": "",
+      "district": "الحوية",
+      "address": "حي الحوية، شارع 15",
+      "status": "suspended",
+      "createdAt": "2026-01-13T18:19:30.874Z"
+    }
+  ],
+  "beneficiaryStatusLabels": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "suspended": "موقوف"
+  },
+  "defaultCoverage": 0.8,
+  "documentCategories": [
+    "الهوية / الإقامة",
+    "التقارير الطبية",
+    "الوصفات الطبية",
+    "المستندات المالية",
+    "التقرير الاجتماعي",
+    "الفواتير",
+    "إثبات تقديم الخدمة",
+    "أخرى"
+  ],
+  "seedNotes": [
+    {
+      "id": "n1",
+      "beneficiaryId": "BEN-00438",
+      "at": "2026-10-20T18:19:30.875Z",
+      "author": "ريم الشهري",
+      "role": "باحث اجتماعي",
+      "text": "تعيش المستفيدة مع ابنتها، ويفضل التواصل مع الابنة لتنسيق المواعيد.",
+      "visibility": "internal"
+    },
+    {
+      "id": "n2",
+      "beneficiaryId": "BEN-0001",
+      "at": "2026-10-30T18:19:30.875Z",
+      "author": "هدى الزهراني",
+      "role": "علاقات المرضى",
+      "text": "المستفيد راضٍ عن الخدمات السابقة ويطلب مواعيد صباحية.",
+      "visibility": "internal"
+    }
+  ],
+  "servicePricing": {
+    "تمريض منزلي": 1800,
+    "علاج طبيعي": 2400,
+    "رعاية الجروح": 1200,
+    "زيارة طبيب": 600,
+    "أجهزة طبية": 3500,
+    "غسيل كلى منزلي": 3500
+  }
+}

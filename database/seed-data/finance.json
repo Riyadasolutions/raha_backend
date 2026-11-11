@@ -1,0 +1,181 @@
+{
+  "INSUFFICIENT_MSG": "الرصيد المتاح في المحفظة غير كافٍ لتغطية المبلغ المطلوب.",
+  "authorizationStatusLabels": {
+    "DRAFT": "مسودة",
+    "ISSUED": "صادر",
+    "CANCELLED": "ملغي",
+    "REPLACED": "مستبدل"
+  },
+  "beneficiaryFinanceLabels": {
+    "pending_review": "قيد الاعتماد المالي",
+    "in_review": "قيد الاعتماد المالي",
+    "split_approved": "قيد الاعتماد المالي",
+    "funding_incomplete": "قيد الاعتماد المالي",
+    "reserved": "قيد الاعتماد المالي",
+    "pending_executive": "بانتظار الاعتماد النهائي",
+    "executive_approved": "تمت الموافقة على الخدمة",
+    "authorization_issued": "تم تعميد مقدم الخدمة",
+    "provider_assigned": "جاري التنسيق لتقديم الخدمة"
+  },
+  "defaultFinanceConfig": {
+    "id": "finance",
+    "version": 1,
+    "order": "RESERVE_THEN_APPROVE",
+    "updatedAt": "2026-01-01T08:00:00.000Z",
+    "updatedBy": "النظام",
+    "signatoryName": "",
+    "signatoryTitle": "المدير التنفيذي",
+    "letterValidityDays": null
+  },
+  "financeStageLabels": {
+    "pending_review": "بانتظار المراجعة المالية",
+    "in_review": "قيد المراجعة المالية",
+    "split_approved": "تم اعتماد التوزيع المالي",
+    "funding_incomplete": "التمويل غير مكتمل",
+    "reserved": "تم حجز التمويل",
+    "pending_executive": "بانتظار اعتماد المدير التنفيذي",
+    "executive_approved": "معتمد نهائيًا — بانتظار إصدار التعميد",
+    "authorization_issued": "تم إصدار التعميد",
+    "provider_assigned": "تم إسناد الخدمة",
+    "funding_rejected": "رُفض التمويل",
+    "executive_rejected": "مرفوض من المدير التنفيذي"
+  },
+  "ledgerTypeLabels": {
+    "OPENING": "رصيد افتتاحي",
+    "FUNDING_ADDED": "إضافة تمويل",
+    "ADJUSTMENT": "تعديل رصيد مصرح به",
+    "RESERVATION": "حجز مبلغ",
+    "RESERVATION_RELEASE": "إلغاء حجز",
+    "RESERVATION_CANCELLED": "إلغاء حجز (ملغي)",
+    "COMMITMENT_CONVERSION": "تحويل حجز إلى التزام معتمد",
+    "COMMITMENT_REVERSAL": "عكس التزام معتمد",
+    "DEDUCTION": "خصم فعلي"
+  },
+  "reservationStatusLabels": {
+    "ACTIVE": "نشط",
+    "RELEASED": "محرر",
+    "CONVERTED": "محول إلى التزام",
+    "CANCELLED": "ملغي",
+    "REVERSED": "التزام معكوس"
+  },
+  "seedLedger": [
+    {
+      "id": "LED-00001",
+      "walletId": "WAL-001",
+      "amountHalalas": 5000000,
+      "type": "OPENING",
+      "note": "رصيد افتتاحي تجريبي",
+      "createdBy": "النظام",
+      "createdAt": "2026-01-01T08:00:00.000Z"
+    },
+    {
+      "id": "LED-00002",
+      "walletId": "WAL-002",
+      "amountHalalas": 3000000,
+      "type": "OPENING",
+      "note": "رصيد افتتاحي تجريبي",
+      "createdBy": "النظام",
+      "createdAt": "2026-01-01T08:00:00.000Z"
+    },
+    {
+      "id": "LED-00003",
+      "walletId": "WAL-003",
+      "amountHalalas": 1500000,
+      "type": "OPENING",
+      "note": "رصيد افتتاحي تجريبي",
+      "createdBy": "النظام",
+      "createdAt": "2026-01-01T08:00:00.000Z"
+    },
+    {
+      "id": "LED-00004",
+      "walletId": "WAL-004",
+      "amountHalalas": 2000000,
+      "type": "OPENING",
+      "note": "رصيد افتتاحي تجريبي",
+      "createdBy": "النظام",
+      "createdAt": "2026-01-01T08:00:00.000Z"
+    },
+    {
+      "id": "LED-00005",
+      "walletId": "WAL-005",
+      "amountHalalas": 100000,
+      "type": "OPENING",
+      "note": "رصيد افتتاحي تجريبي",
+      "createdBy": "النظام",
+      "createdAt": "2026-01-01T08:00:00.000Z"
+    }
+  ],
+  "seedWallets": [
+    {
+      "id": "WAL-001",
+      "nameAr": "محفظة الدعم العام",
+      "nameEn": "General Support Wallet",
+      "description": "تمويل تجريبي عام لجميع الخدمات.",
+      "category": "عام",
+      "eligibleServiceIds": [],
+      "status": "ACTIVE",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "adminIds": [
+        "u6"
+      ]
+    },
+    {
+      "id": "WAL-002",
+      "nameAr": "محفظة غسيل الكلى",
+      "nameEn": "Dialysis Wallet",
+      "description": "تمويل تجريبي لخدمات غسيل الكلى.",
+      "category": "غسيل الكلى",
+      "eligibleServiceIds": [
+        "SRV-006"
+      ],
+      "status": "ACTIVE",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "adminIds": [
+        "u6"
+      ]
+    },
+    {
+      "id": "WAL-003",
+      "nameAr": "محفظة العلاج الطبيعي",
+      "nameEn": "Physiotherapy Wallet",
+      "description": "تمويل تجريبي للعلاج الطبيعي المنزلي.",
+      "category": "العلاج الطبيعي",
+      "eligibleServiceIds": [
+        "SRV-002"
+      ],
+      "status": "ACTIVE",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "adminIds": [
+        "u6"
+      ]
+    },
+    {
+      "id": "WAL-004",
+      "nameAr": "محفظة الرعاية المنزلية",
+      "nameEn": "Home Care Wallet",
+      "description": "تمويل تجريبي للتمريض والرعاية المنزلية.",
+      "category": "الرعاية المنزلية",
+      "eligibleServiceIds": [
+        "SRV-001"
+      ],
+      "status": "ACTIVE",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "adminIds": [
+        "u6"
+      ]
+    },
+    {
+      "id": "WAL-005",
+      "nameAr": "محفظة التبرعات المخصصة",
+      "nameEn": "Designated Donations Wallet",
+      "description": "تبرعات تجريبية مخصصة.",
+      "category": "تبرعات",
+      "eligibleServiceIds": [],
+      "status": "ACTIVE",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "adminIds": [
+        "u6"
+      ]
+    }
+  ]
+}

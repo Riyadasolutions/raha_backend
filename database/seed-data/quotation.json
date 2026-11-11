@@ -1,0 +1,54 @@
+{
+  "CURRENCY": "SAR — ريال سعودي",
+  "complianceLabels": {
+    "compliant": "مطابق",
+    "noncompliant": "غير مطابق",
+    "clarification": "يحتاج إلى توضيح"
+  },
+  "invitationLabels": {
+    "invited": "دعوة جديدة",
+    "draft": "مسودة لم تُرسل",
+    "submitted": "تم تقديم العرض",
+    "declined": "تم الاعتذار",
+    "expired": "انتهت المهلة",
+    "selected": "تم اختيار العرض",
+    "not_selected": "لم يتم اختيار العرض",
+    "cancelled": "ملغي"
+  },
+  "quotationUnits": [
+    "جلسة",
+    "زيارة",
+    "يوم",
+    "شهر",
+    "قطعة",
+    "رحلة",
+    "خدمة"
+  ],
+  "roundStatusLabels": {
+    "draft": "مسودة",
+    "invited": "تم إرسال الدعوات",
+    "awaiting": "بانتظار عروض الأسعار",
+    "partial": "تم استلام بعض العروض",
+    "closed": "أُغلق استقبال العروض",
+    "evaluating": "قيد تقييم العروض",
+    "selected": "تم اختيار العرض",
+    "cancelled": "ملغي"
+  },
+  "taxTreatments": [
+    {
+      "value": "exempt",
+      "label": "معفى من الضريبة",
+      "defaultRate": 0
+    },
+    {
+      "value": "zero",
+      "label": "خاضع بنسبة صفرية",
+      "defaultRate": 0
+    },
+    {
+      "value": "standard",
+      "label": "خاضع للضريبة (نسبة يحددها مقدم الخدمة)",
+      "defaultRate": 15
+    }
+  ]
+}

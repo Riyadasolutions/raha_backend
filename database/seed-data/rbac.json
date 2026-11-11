@@ -1,0 +1,1859 @@
+{
+  "permissionCatalog": [
+    {
+      "id": "beneficiaries.view",
+      "code": "beneficiaries.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض المستفيدين",
+      "nameEn": "View beneficiaries",
+      "sensitivity": "NORMAL",
+      "scopeOptions": [
+        "ASSIGNED",
+        "ALL"
+      ]
+    },
+    {
+      "id": "beneficiaries.viewSensitive",
+      "code": "beneficiaries.viewSensitive",
+      "module": "beneficiaries",
+      "nameAr": "عرض البيانات الحساسة",
+      "nameEn": "View sensitive data",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "beneficiaries.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.create",
+      "code": "beneficiaries.create",
+      "module": "beneficiaries",
+      "nameAr": "إضافة مستفيد",
+      "nameEn": "Create beneficiary",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "beneficiaries.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.edit",
+      "code": "beneficiaries.edit",
+      "module": "beneficiaries",
+      "nameAr": "تعديل مستفيد",
+      "nameEn": "Edit beneficiary",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "beneficiaries.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.createRequest",
+      "code": "beneficiaries.createRequest",
+      "module": "beneficiaries",
+      "nameAr": "إنشاء طلب نيابة عن مستفيد",
+      "nameEn": "Create request on behalf",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "beneficiaries.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.documents.view",
+      "code": "beneficiaries.documents.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض المستندات",
+      "nameEn": "View documents",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "beneficiaries.documents.upload",
+      "code": "beneficiaries.documents.upload",
+      "module": "beneficiaries",
+      "nameAr": "رفع المستندات",
+      "nameEn": "Upload documents",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "beneficiaries.documents.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.documents.delete",
+      "code": "beneficiaries.documents.delete",
+      "module": "beneficiaries",
+      "nameAr": "حذف المستندات",
+      "nameEn": "Delete documents",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "beneficiaries.documents.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.medical.view",
+      "code": "beneficiaries.medical.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض المعلومات الطبية",
+      "nameEn": "View medical info",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "beneficiaries.financial.view",
+      "code": "beneficiaries.financial.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض البيانات المالية",
+      "nameEn": "View financial data",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "beneficiaries.notes.view",
+      "code": "beneficiaries.notes.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض الملاحظات",
+      "nameEn": "View notes",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "beneficiaries.notes.create",
+      "code": "beneficiaries.notes.create",
+      "module": "beneficiaries",
+      "nameAr": "إضافة ملاحظة",
+      "nameEn": "Add note",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "beneficiaries.notes.view"
+      ]
+    },
+    {
+      "id": "beneficiaries.activity.view",
+      "code": "beneficiaries.activity.view",
+      "module": "beneficiaries",
+      "nameAr": "عرض سجل نشاط المستفيد",
+      "nameEn": "View beneficiary activity",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "cases.view",
+      "code": "cases.view",
+      "module": "cases",
+      "nameAr": "عرض الطلبات",
+      "nameEn": "View requests",
+      "sensitivity": "NORMAL",
+      "scopeOptions": [
+        "ASSIGNED",
+        "ALL"
+      ]
+    },
+    {
+      "id": "requests.statusLookup",
+      "code": "requests.statusLookup",
+      "module": "cases",
+      "nameAr": "الاستعلام عن حالة طلب برقمه (حالة ومرحلة فقط)",
+      "nameEn": "Look up request status by number",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "cases.review",
+      "code": "cases.review",
+      "module": "cases",
+      "nameAr": "تدقيق طلب",
+      "nameEn": "Audit request",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "cases.approve",
+      "code": "cases.approve",
+      "module": "cases",
+      "nameAr": "اعتماد طلب",
+      "nameEn": "Approve request",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "cases.reject",
+      "code": "cases.reject",
+      "module": "cases",
+      "nameAr": "رفض طلب",
+      "nameEn": "Reject request",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "cases.return",
+      "code": "cases.return",
+      "module": "cases",
+      "nameAr": "إرجاع طلب",
+      "nameEn": "Return request",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "cases.assign",
+      "code": "cases.assign",
+      "module": "cases",
+      "nameAr": "إسناد طلب",
+      "nameEn": "Assign request",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "medical.review",
+      "code": "medical.review",
+      "module": "medical",
+      "nameAr": "إجراء مراجعة طبية (والرفض)",
+      "nameEn": "Perform medical review",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "medical.approve",
+      "code": "medical.approve",
+      "module": "medical",
+      "nameAr": "اعتماد المراجعة الطبية",
+      "nameEn": "Approve medical review",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "medical.return",
+      "code": "medical.return",
+      "module": "medical",
+      "nameAr": "إرجاع الطلب من المراجعة الطبية",
+      "nameEn": "Return from medical review",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "social.approve",
+      "code": "social.approve",
+      "module": "social",
+      "nameAr": "إكمال واعتماد الدراسة",
+      "nameEn": "Approve social study",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "requests.claim",
+      "code": "requests.claim",
+      "module": "workflow",
+      "nameAr": "استلام طلب من طابور العمل",
+      "nameEn": "Claim request from queue",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "requests.release",
+      "code": "requests.release",
+      "module": "workflow",
+      "nameAr": "إعادة المهمة للطابور",
+      "nameEn": "Release own task",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "requests.claim"
+      ]
+    },
+    {
+      "id": "requests.reassign",
+      "code": "requests.reassign",
+      "module": "workflow",
+      "nameAr": "إعادة إسناد مهمة لموظف آخر",
+      "nameEn": "Reassign task",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "tasks.manage",
+      "code": "tasks.manage",
+      "module": "workflow",
+      "nameAr": "إدارة جميع المهام",
+      "nameEn": "Manage all tasks",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "requests.social.return",
+      "code": "requests.social.return",
+      "module": "workflow",
+      "nameAr": "إعادة الطلب من البحث الاجتماعي",
+      "nameEn": "Return from social review",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "requests.care.return",
+      "code": "requests.care.return",
+      "module": "workflow",
+      "nameAr": "إعادة الطلب للمراجعة الداخلية (مدير الرعاية)",
+      "nameEn": "Send back for review",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "workflow.history.view",
+      "code": "workflow.history.view",
+      "module": "workflow",
+      "nameAr": "عرض سير العمل والمهام",
+      "nameEn": "View workflow history",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "comments.internal.create",
+      "code": "comments.internal.create",
+      "module": "workflow",
+      "nameAr": "إضافة ملاحظة داخلية",
+      "nameEn": "Add internal note",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "comments.beneficiary.create",
+      "code": "comments.beneficiary.create",
+      "module": "workflow",
+      "nameAr": "إضافة ملاحظة للمستفيد",
+      "nameEn": "Add beneficiary note",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "service.accept",
+      "code": "service.accept",
+      "module": "delivery",
+      "nameAr": "تأكيد استلام الطلب (مقدم خارجي)",
+      "nameEn": "Accept assignment",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "service.schedule",
+      "code": "service.schedule",
+      "module": "delivery",
+      "nameAr": "تحديد موعد الخدمة",
+      "nameEn": "Schedule service",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "service.deliver",
+      "code": "service.deliver",
+      "module": "delivery",
+      "nameAr": "بدء وإنهاء تقديم الخدمة",
+      "nameEn": "Deliver service",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "relations.review",
+      "code": "relations.review",
+      "module": "delivery",
+      "nameAr": "اعتماد تأكيد وتقييم المستفيد",
+      "nameEn": "Review beneficiary confirmation",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "visits.monitor",
+      "code": "visits.monitor",
+      "module": "delivery",
+      "nameAr": "متابعة تنفيذ الزيارات (قراءة فقط)",
+      "nameEn": "Monitor visit execution",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "visits.schedule",
+      "code": "visits.schedule",
+      "module": "delivery",
+      "nameAr": "جدولة الزيارات وتسجيلها نيابة عن مقدم الخدمة",
+      "nameEn": "Schedule and record visits",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "visits.monitor"
+      ]
+    },
+    {
+      "id": "visits.correct",
+      "code": "visits.correct",
+      "module": "delivery",
+      "nameAr": "تصحيح سجلات الزيارات المكتملة",
+      "nameEn": "Correct visit records",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "visits.monitor"
+      ]
+    },
+    {
+      "id": "provider.visits.manageOwn",
+      "code": "provider.visits.manageOwn",
+      "module": "delivery",
+      "nameAr": "مقدم الخدمة: جدولة وتحديث زياراته",
+      "nameEn": "Provider: manage own visits",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "provider.authorization.viewOwn"
+      ]
+    },
+    {
+      "id": "visits.configure",
+      "code": "visits.configure",
+      "module": "delivery",
+      "nameAr": "تحديد عدد الزيارات المعتمد للطلب",
+      "nameEn": "Set approved visit count",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "services.view",
+      "code": "services.view",
+      "module": "services",
+      "nameAr": "عرض الخدمات",
+      "nameEn": "View services",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "services.manage",
+      "code": "services.manage",
+      "module": "services",
+      "nameAr": "إضافة وتعديل وتفعيل الخدمات",
+      "nameEn": "Manage services",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "services.view"
+      ]
+    },
+    {
+      "id": "providers.view",
+      "code": "providers.view",
+      "module": "providers",
+      "nameAr": "عرض مقدمي الخدمة",
+      "nameEn": "View providers",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "providers.manage",
+      "code": "providers.manage",
+      "module": "providers",
+      "nameAr": "إضافة وتعديل وتفعيل مقدمي الخدمة",
+      "nameEn": "Manage providers",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "providers.view"
+      ]
+    },
+    {
+      "id": "finance.confirmPayment",
+      "code": "finance.confirmPayment",
+      "module": "finance",
+      "nameAr": "إكمال المعالجة المالية وتأكيد الصرف",
+      "nameEn": "Confirm payment",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "finance.dashboard.view",
+      "code": "finance.dashboard.view",
+      "module": "finance",
+      "nameAr": "عرض لوحة المالية",
+      "nameEn": "View finance dashboard",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "finance.wallets.view",
+      "code": "finance.wallets.view",
+      "module": "finance",
+      "nameAr": "عرض محافظ الدعم",
+      "nameEn": "View wallets",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "finance.wallets.manage",
+      "code": "finance.wallets.manage",
+      "module": "finance",
+      "nameAr": "إنشاء وتعديل وإيقاف المحافظ وإضافة تمويل تجريبي",
+      "nameEn": "Manage wallets",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "finance.wallets.view"
+      ]
+    },
+    {
+      "id": "finance.ledger.view",
+      "code": "finance.ledger.view",
+      "module": "finance",
+      "nameAr": "عرض سجل العمليات المالية",
+      "nameEn": "View ledger",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "finance.funding.review",
+      "code": "finance.funding.review",
+      "module": "finance",
+      "nameAr": "المراجعة المالية للطلبات",
+      "nameEn": "Review funding",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "finance.funding.allocate",
+      "code": "finance.funding.allocate",
+      "module": "finance",
+      "nameAr": "تحديد مصادر التمويل والتوزيع",
+      "nameEn": "Allocate funding",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "finance.funding.review"
+      ]
+    },
+    {
+      "id": "finance.funding.reserve",
+      "code": "finance.funding.reserve",
+      "module": "finance",
+      "nameAr": "حجز التمويل",
+      "nameEn": "Reserve funding",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "finance.funding.review"
+      ]
+    },
+    {
+      "id": "finance.funding.release",
+      "code": "finance.funding.release",
+      "module": "finance",
+      "nameAr": "تحرير حجز التمويل",
+      "nameEn": "Release reservation",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "finance.funding.review"
+      ]
+    },
+    {
+      "id": "finance.funding.approve",
+      "code": "finance.funding.approve",
+      "module": "finance",
+      "nameAr": "اعتماد التوزيع المالي",
+      "nameEn": "Approve funding split",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "finance.funding.review"
+      ]
+    },
+    {
+      "id": "finance.funding.reject",
+      "code": "finance.funding.reject",
+      "module": "finance",
+      "nameAr": "رفض التمويل أو إعادته",
+      "nameEn": "Reject funding",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "finance.funding.review"
+      ]
+    },
+    {
+      "id": "finance.commitments.view",
+      "code": "finance.commitments.view",
+      "module": "finance",
+      "nameAr": "عرض الالتزامات المالية",
+      "nameEn": "View commitments",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "finance.config.manage",
+      "code": "finance.config.manage",
+      "module": "finance",
+      "nameAr": "إعداد ترتيب الاعتماد ونموذج خطاب التعميد",
+      "nameEn": "Configure approval order",
+      "sensitivity": "CRITICAL"
+    },
+    {
+      "id": "executive.approvals.view",
+      "code": "executive.approvals.view",
+      "module": "executive",
+      "nameAr": "عرض طلبات الاعتماد النهائي",
+      "nameEn": "View final approvals",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "cases.view"
+      ]
+    },
+    {
+      "id": "executive.approvals.approve",
+      "code": "executive.approvals.approve",
+      "module": "executive",
+      "nameAr": "الاعتماد النهائي",
+      "nameEn": "Final approval",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "executive.approvals.view"
+      ]
+    },
+    {
+      "id": "executive.approvals.reject",
+      "code": "executive.approvals.reject",
+      "module": "executive",
+      "nameAr": "رفض الطلب نهائيًا",
+      "nameEn": "Final rejection",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "executive.approvals.view"
+      ]
+    },
+    {
+      "id": "executive.approvals.return",
+      "code": "executive.approvals.return",
+      "module": "executive",
+      "nameAr": "إعادة للمراجعة المالية",
+      "nameEn": "Return for review",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "executive.approvals.view"
+      ]
+    },
+    {
+      "id": "authorization.view",
+      "code": "authorization.view",
+      "module": "authorization",
+      "nameAr": "عرض خطابات التعميد",
+      "nameEn": "View authorizations",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "authorization.create",
+      "code": "authorization.create",
+      "module": "authorization",
+      "nameAr": "إنشاء مسودة خطاب التعميد",
+      "nameEn": "Create authorization",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "authorization.view"
+      ]
+    },
+    {
+      "id": "authorization.issue",
+      "code": "authorization.issue",
+      "module": "authorization",
+      "nameAr": "إصدار خطاب التعميد",
+      "nameEn": "Issue authorization",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "authorization.view"
+      ]
+    },
+    {
+      "id": "authorization.cancel",
+      "code": "authorization.cancel",
+      "module": "authorization",
+      "nameAr": "إلغاء خطاب التعميد",
+      "nameEn": "Cancel authorization",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "authorization.view"
+      ]
+    },
+    {
+      "id": "authorization.replace",
+      "code": "authorization.replace",
+      "module": "authorization",
+      "nameAr": "استبدال خطاب التعميد",
+      "nameEn": "Replace authorization",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "authorization.view"
+      ]
+    },
+    {
+      "id": "provider.assignAuthorized",
+      "code": "provider.assignAuthorized",
+      "module": "authorization",
+      "nameAr": "إسناد الخدمة لمقدم الخدمة المعمد",
+      "nameEn": "Assign authorized provider",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "authorization.view"
+      ]
+    },
+    {
+      "id": "provider.authorization.viewOwn",
+      "code": "provider.authorization.viewOwn",
+      "module": "authorization",
+      "nameAr": "مقدم الخدمة: عرض التعميد الخاص به",
+      "nameEn": "Provider: view own authorization",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "provider.authorization.acknowledgeOwn",
+      "code": "provider.authorization.acknowledgeOwn",
+      "module": "authorization",
+      "nameAr": "مقدم الخدمة: تأكيد استلام التعميد",
+      "nameEn": "Provider: acknowledge authorization",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "provider.authorization.viewOwn"
+      ]
+    },
+    {
+      "id": "reports.view",
+      "code": "reports.view",
+      "module": "reports",
+      "nameAr": "عرض التقارير",
+      "nameEn": "View reports",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "reports.export",
+      "code": "reports.export",
+      "module": "reports",
+      "nameAr": "تصدير التقارير",
+      "nameEn": "Export reports",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "reports.view"
+      ]
+    },
+    {
+      "id": "users.view",
+      "code": "users.view",
+      "module": "users",
+      "nameAr": "عرض المستخدمين",
+      "nameEn": "View users",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "users.create",
+      "code": "users.create",
+      "module": "users",
+      "nameAr": "إضافة مستخدم",
+      "nameEn": "Create user",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "users.view"
+      ]
+    },
+    {
+      "id": "users.edit",
+      "code": "users.edit",
+      "module": "users",
+      "nameAr": "تعديل مستخدم وأدواره",
+      "nameEn": "Edit user",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "users.view"
+      ]
+    },
+    {
+      "id": "users.deactivate",
+      "code": "users.deactivate",
+      "module": "users",
+      "nameAr": "إيقاف وتفعيل مستخدم",
+      "nameEn": "Suspend user",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "users.view"
+      ]
+    },
+    {
+      "id": "users.manageSecurity",
+      "code": "users.manageSecurity",
+      "module": "users",
+      "nameAr": "إدارة أمان المستخدم والجلسات",
+      "nameEn": "Manage user security",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "users.view"
+      ]
+    },
+    {
+      "id": "roles.view",
+      "code": "roles.view",
+      "module": "roles",
+      "nameAr": "عرض الأدوار",
+      "nameEn": "View roles",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "roles.create",
+      "code": "roles.create",
+      "module": "roles",
+      "nameAr": "إضافة ونسخ دور",
+      "nameEn": "Create role",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "roles.view"
+      ]
+    },
+    {
+      "id": "roles.edit",
+      "code": "roles.edit",
+      "module": "roles",
+      "nameAr": "تعديل بيانات الدور",
+      "nameEn": "Edit role",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "roles.view"
+      ]
+    },
+    {
+      "id": "roles.delete",
+      "code": "roles.delete",
+      "module": "roles",
+      "nameAr": "حذف دور",
+      "nameEn": "Delete role",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "roles.view"
+      ]
+    },
+    {
+      "id": "roles.managePermissions",
+      "code": "roles.managePermissions",
+      "module": "roles",
+      "nameAr": "إدارة الصلاحيات",
+      "nameEn": "Manage permissions",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "roles.view"
+      ]
+    },
+    {
+      "id": "quotations.view",
+      "code": "quotations.view",
+      "module": "quotations",
+      "nameAr": "عرض طلبات التسعير",
+      "nameEn": "View quotation rounds",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "quotations.create",
+      "code": "quotations.create",
+      "module": "quotations",
+      "nameAr": "إنشاء طلب عروض أسعار",
+      "nameEn": "Create quotation request",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.inviteProviders",
+      "code": "quotations.inviteProviders",
+      "module": "quotations",
+      "nameAr": "دعوة مقدمي الخدمة للتسعير",
+      "nameEn": "Invite providers",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.extendDeadline",
+      "code": "quotations.extendDeadline",
+      "module": "quotations",
+      "nameAr": "تمديد مهلة العروض",
+      "nameEn": "Extend deadline",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.close",
+      "code": "quotations.close",
+      "module": "quotations",
+      "nameAr": "إغلاق استقبال العروض",
+      "nameEn": "Close quotation round",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.compare",
+      "code": "quotations.compare",
+      "module": "quotations",
+      "nameAr": "مقارنة العروض",
+      "nameEn": "Compare quotations",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.medicalEvaluate",
+      "code": "quotations.medicalEvaluate",
+      "module": "quotations",
+      "nameAr": "التقييم الطبي للعروض",
+      "nameEn": "Medically evaluate quotations",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.selectPreferred",
+      "code": "quotations.selectPreferred",
+      "module": "quotations",
+      "nameAr": "اختيار العرض المناسب",
+      "nameEn": "Select preferred quotation",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "quotations.cancel",
+      "code": "quotations.cancel",
+      "module": "quotations",
+      "nameAr": "إلغاء طلب التسعير",
+      "nameEn": "Cancel quotation round",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "quotations.view"
+      ]
+    },
+    {
+      "id": "provider.quotations.viewOwn",
+      "code": "provider.quotations.viewOwn",
+      "module": "quotations",
+      "nameAr": "مقدم الخدمة: عرض دعوات التسعير الخاصة به",
+      "nameEn": "Provider: view own invitations",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "provider.quotations.createOwn",
+      "code": "provider.quotations.createOwn",
+      "module": "quotations",
+      "nameAr": "مقدم الخدمة: إنشاء عرض سعر",
+      "nameEn": "Provider: create quotation",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "provider.quotations.viewOwn"
+      ]
+    },
+    {
+      "id": "provider.quotations.editDraftOwn",
+      "code": "provider.quotations.editDraftOwn",
+      "module": "quotations",
+      "nameAr": "مقدم الخدمة: تعديل مسودة العرض",
+      "nameEn": "Provider: edit own draft",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "provider.quotations.viewOwn"
+      ]
+    },
+    {
+      "id": "provider.quotations.submitOwn",
+      "code": "provider.quotations.submitOwn",
+      "module": "quotations",
+      "nameAr": "مقدم الخدمة: إرسال عرض السعر",
+      "nameEn": "Provider: submit quotation",
+      "sensitivity": "SENSITIVE",
+      "dependsOn": [
+        "provider.quotations.viewOwn"
+      ]
+    },
+    {
+      "id": "provider.quotations.declineOwn",
+      "code": "provider.quotations.declineOwn",
+      "module": "quotations",
+      "nameAr": "مقدم الخدمة: الاعتذار عن التسعير",
+      "nameEn": "Provider: decline invitation",
+      "sensitivity": "NORMAL",
+      "dependsOn": [
+        "provider.quotations.viewOwn"
+      ]
+    },
+    {
+      "id": "audit.view",
+      "code": "audit.view",
+      "module": "audit",
+      "nameAr": "عرض سجل العمليات وسجل الأمان",
+      "nameEn": "View audit and security log",
+      "sensitivity": "SENSITIVE"
+    },
+    {
+      "id": "security.view",
+      "code": "security.view",
+      "module": "settings",
+      "nameAr": "عرض سياسات الأمان",
+      "nameEn": "View security policies",
+      "sensitivity": "NORMAL"
+    },
+    {
+      "id": "security.manage",
+      "code": "security.manage",
+      "module": "settings",
+      "nameAr": "إدارة سياسات الأمان",
+      "nameEn": "Manage security policies",
+      "sensitivity": "CRITICAL",
+      "dependsOn": [
+        "security.view"
+      ]
+    },
+    {
+      "id": "organization.manage",
+      "code": "organization.manage",
+      "module": "settings",
+      "nameAr": "إدارة هوية الجمعية على المستندات الرسمية (الشعار والبيانات)",
+      "nameEn": "Manage association document identity",
+      "sensitivity": "CRITICAL"
+    }
+  ],
+  "permissionGroups": [
+    {
+      "id": "beneficiaries",
+      "nameAr": "المستفيدون",
+      "codes": [
+        "beneficiaries.view",
+        "beneficiaries.viewSensitive",
+        "beneficiaries.create",
+        "beneficiaries.edit",
+        "beneficiaries.createRequest",
+        "beneficiaries.documents.view",
+        "beneficiaries.documents.upload",
+        "beneficiaries.documents.delete",
+        "beneficiaries.medical.view",
+        "beneficiaries.financial.view",
+        "beneficiaries.notes.view",
+        "beneficiaries.notes.create",
+        "beneficiaries.activity.view"
+      ]
+    },
+    {
+      "id": "cases",
+      "nameAr": "الطلبات",
+      "codes": [
+        "cases.view",
+        "requests.statusLookup",
+        "cases.review",
+        "cases.approve",
+        "cases.reject",
+        "cases.return",
+        "cases.assign"
+      ]
+    },
+    {
+      "id": "medical",
+      "nameAr": "المراجعة الطبية",
+      "codes": [
+        "medical.review",
+        "medical.approve",
+        "medical.return"
+      ]
+    },
+    {
+      "id": "social",
+      "nameAr": "الدراسة الاجتماعية",
+      "codes": [
+        "social.approve"
+      ]
+    },
+    {
+      "id": "workflow",
+      "nameAr": "سير العمل والمهام",
+      "codes": [
+        "requests.claim",
+        "requests.release",
+        "requests.reassign",
+        "tasks.manage",
+        "requests.social.return",
+        "requests.care.return",
+        "workflow.history.view",
+        "comments.internal.create",
+        "comments.beneficiary.create"
+      ]
+    },
+    {
+      "id": "delivery",
+      "nameAr": "تقديم الخدمة",
+      "codes": [
+        "service.accept",
+        "service.schedule",
+        "service.deliver",
+        "relations.review",
+        "visits.monitor",
+        "visits.schedule",
+        "visits.correct",
+        "provider.visits.manageOwn",
+        "visits.configure"
+      ]
+    },
+    {
+      "id": "services",
+      "nameAr": "الخدمات",
+      "codes": [
+        "services.view",
+        "services.manage"
+      ]
+    },
+    {
+      "id": "providers",
+      "nameAr": "مقدمو الخدمة",
+      "codes": [
+        "providers.view",
+        "providers.manage"
+      ]
+    },
+    {
+      "id": "finance",
+      "nameAr": "المالية",
+      "codes": [
+        "finance.confirmPayment",
+        "finance.dashboard.view",
+        "finance.wallets.view",
+        "finance.wallets.manage",
+        "finance.ledger.view",
+        "finance.funding.review",
+        "finance.funding.allocate",
+        "finance.funding.reserve",
+        "finance.funding.release",
+        "finance.funding.approve",
+        "finance.funding.reject",
+        "finance.commitments.view",
+        "finance.config.manage"
+      ]
+    },
+    {
+      "id": "executive",
+      "nameAr": "الاعتماد النهائي",
+      "codes": [
+        "executive.approvals.view",
+        "executive.approvals.approve",
+        "executive.approvals.reject",
+        "executive.approvals.return"
+      ]
+    },
+    {
+      "id": "authorization",
+      "nameAr": "خطابات التعميد والإسناد",
+      "codes": [
+        "authorization.view",
+        "authorization.create",
+        "authorization.issue",
+        "authorization.cancel",
+        "authorization.replace",
+        "provider.assignAuthorized",
+        "provider.authorization.viewOwn",
+        "provider.authorization.acknowledgeOwn"
+      ]
+    },
+    {
+      "id": "reports",
+      "nameAr": "التقارير",
+      "codes": [
+        "reports.view",
+        "reports.export"
+      ]
+    },
+    {
+      "id": "users",
+      "nameAr": "المستخدمون",
+      "codes": [
+        "users.view",
+        "users.create",
+        "users.edit",
+        "users.deactivate",
+        "users.manageSecurity"
+      ]
+    },
+    {
+      "id": "roles",
+      "nameAr": "الأدوار والصلاحيات",
+      "codes": [
+        "roles.view",
+        "roles.create",
+        "roles.edit",
+        "roles.delete",
+        "roles.managePermissions"
+      ]
+    },
+    {
+      "id": "quotations",
+      "nameAr": "عروض الأسعار",
+      "codes": [
+        "quotations.view",
+        "quotations.create",
+        "quotations.inviteProviders",
+        "quotations.extendDeadline",
+        "quotations.close",
+        "quotations.compare",
+        "quotations.medicalEvaluate",
+        "quotations.selectPreferred",
+        "quotations.cancel",
+        "provider.quotations.viewOwn",
+        "provider.quotations.createOwn",
+        "provider.quotations.editDraftOwn",
+        "provider.quotations.submitOwn",
+        "provider.quotations.declineOwn"
+      ]
+    },
+    {
+      "id": "audit",
+      "nameAr": "سجل العمليات",
+      "codes": [
+        "audit.view"
+      ]
+    },
+    {
+      "id": "settings",
+      "nameAr": "إعدادات النظام",
+      "codes": [
+        "security.view",
+        "security.manage",
+        "organization.manage"
+      ]
+    }
+  ],
+  "adminPermission": "roles.managePermissions",
+  "scopeRank": {
+    "NONE": 0,
+    "OWN": 1,
+    "ASSIGNED": 2,
+    "DEPARTMENT": 3,
+    "ALL": 4
+  },
+  "scopeLabels": {
+    "NONE": "لا يوجد",
+    "OWN": "الخاصة بي",
+    "ASSIGNED": "المسندة إلي فقط",
+    "DEPARTMENT": "القسم",
+    "ALL": "الكل"
+  },
+  "sensitivityLabels": {
+    "NORMAL": "عادية",
+    "SENSITIVE": "حساسة",
+    "CRITICAL": "حرجة"
+  },
+  "roles": [
+    {
+      "id": "admin",
+      "code": "SYSTEM_ADMIN",
+      "nameAr": "مدير النظام",
+      "nameEn": "SYSTEM_ADMIN",
+      "description": "إدارة كاملة للنظام والمستخدمين والأمان",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "beneficiaries.view": "ALL",
+        "beneficiaries.viewSensitive": "ALL",
+        "beneficiaries.create": "ALL",
+        "beneficiaries.edit": "ALL",
+        "beneficiaries.createRequest": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.documents.upload": "ALL",
+        "beneficiaries.documents.delete": "ALL",
+        "beneficiaries.medical.view": "ALL",
+        "beneficiaries.financial.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "cases.view": "ALL",
+        "requests.statusLookup": "ALL",
+        "cases.review": "ALL",
+        "cases.approve": "ALL",
+        "cases.reject": "ALL",
+        "cases.return": "ALL",
+        "cases.assign": "ALL",
+        "medical.review": "ALL",
+        "medical.approve": "ALL",
+        "medical.return": "ALL",
+        "social.approve": "ALL",
+        "requests.claim": "ALL",
+        "requests.release": "ALL",
+        "requests.reassign": "ALL",
+        "tasks.manage": "ALL",
+        "requests.social.return": "ALL",
+        "requests.care.return": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "service.accept": "ALL",
+        "service.schedule": "ALL",
+        "service.deliver": "ALL",
+        "relations.review": "ALL",
+        "visits.monitor": "ALL",
+        "visits.schedule": "ALL",
+        "visits.correct": "ALL",
+        "provider.visits.manageOwn": "ALL",
+        "visits.configure": "ALL",
+        "services.view": "ALL",
+        "services.manage": "ALL",
+        "providers.view": "ALL",
+        "providers.manage": "ALL",
+        "finance.confirmPayment": "ALL",
+        "finance.dashboard.view": "ALL",
+        "finance.wallets.view": "ALL",
+        "finance.wallets.manage": "ALL",
+        "finance.ledger.view": "ALL",
+        "finance.funding.review": "ALL",
+        "finance.funding.allocate": "ALL",
+        "finance.funding.reserve": "ALL",
+        "finance.funding.release": "ALL",
+        "finance.funding.approve": "ALL",
+        "finance.funding.reject": "ALL",
+        "finance.commitments.view": "ALL",
+        "finance.config.manage": "ALL",
+        "executive.approvals.view": "ALL",
+        "executive.approvals.approve": "ALL",
+        "executive.approvals.reject": "ALL",
+        "executive.approvals.return": "ALL",
+        "authorization.view": "ALL",
+        "authorization.create": "ALL",
+        "authorization.issue": "ALL",
+        "authorization.cancel": "ALL",
+        "authorization.replace": "ALL",
+        "provider.assignAuthorized": "ALL",
+        "provider.authorization.viewOwn": "ALL",
+        "provider.authorization.acknowledgeOwn": "ALL",
+        "reports.view": "ALL",
+        "reports.export": "ALL",
+        "users.view": "ALL",
+        "users.create": "ALL",
+        "users.edit": "ALL",
+        "users.deactivate": "ALL",
+        "users.manageSecurity": "ALL",
+        "roles.view": "ALL",
+        "roles.create": "ALL",
+        "roles.edit": "ALL",
+        "roles.delete": "ALL",
+        "roles.managePermissions": "ALL",
+        "quotations.view": "ALL",
+        "quotations.create": "ALL",
+        "quotations.inviteProviders": "ALL",
+        "quotations.extendDeadline": "ALL",
+        "quotations.close": "ALL",
+        "quotations.compare": "ALL",
+        "quotations.medicalEvaluate": "ALL",
+        "quotations.selectPreferred": "ALL",
+        "quotations.cancel": "ALL",
+        "provider.quotations.viewOwn": "ALL",
+        "provider.quotations.createOwn": "ALL",
+        "provider.quotations.editDraftOwn": "ALL",
+        "provider.quotations.submitOwn": "ALL",
+        "provider.quotations.declineOwn": "ALL",
+        "audit.view": "ALL",
+        "security.view": "ALL",
+        "security.manage": "ALL",
+        "organization.manage": "ALL"
+      },
+      "workflowRole": "admin",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "auditor",
+      "code": "AUDITOR",
+      "nameAr": "المدقق",
+      "nameEn": "AUDITOR",
+      "description": "تدقيق الطلبات الجديدة وإرجاعها أو رفضها",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "providers.view": "ALL",
+        "reports.view": "ALL",
+        "cases.review": "ALL",
+        "cases.reject": "ALL",
+        "cases.return": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.viewSensitive": "ALL",
+        "beneficiaries.edit": "ALL",
+        "beneficiaries.createRequest": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "beneficiaries.documents.upload": "ALL",
+        "requests.claim": "ALL",
+        "requests.release": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "quotations.view": "ALL",
+        "requests.statusLookup": "ALL"
+      },
+      "workflowRole": "auditor",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "medical",
+      "code": "MEDICAL_SPECIALIST",
+      "nameAr": "الأخصائي الطبي",
+      "nameEn": "MEDICAL_SPECIALIST",
+      "description": "المراجعة الطبية للطلبات",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "providers.view": "ALL",
+        "reports.view": "ALL",
+        "medical.review": "ALL",
+        "medical.approve": "ALL",
+        "medical.return": "ALL",
+        "cases.return": "ALL",
+        "cases.reject": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.medical.view": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "requests.claim": "ALL",
+        "requests.release": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "quotations.view": "ALL",
+        "quotations.create": "ALL",
+        "quotations.inviteProviders": "ALL",
+        "quotations.extendDeadline": "ALL",
+        "quotations.close": "ALL",
+        "quotations.compare": "ALL",
+        "quotations.cancel": "ALL",
+        "quotations.medicalEvaluate": "ALL",
+        "quotations.selectPreferred": "ALL",
+        "visits.configure": "ALL"
+      },
+      "workflowRole": "medical",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "social",
+      "code": "SOCIAL_RESEARCHER",
+      "nameAr": "الباحث الاجتماعي",
+      "nameEn": "SOCIAL_RESEARCHER",
+      "description": "إعداد الدراسة الاجتماعية",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "providers.view": "ALL",
+        "reports.view": "ALL",
+        "social.approve": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.viewSensitive": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "beneficiaries.documents.upload": "ALL",
+        "requests.claim": "ALL",
+        "requests.release": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "requests.social.return": "ALL",
+        "quotations.view": "ALL"
+      },
+      "workflowRole": "social",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "manager",
+      "code": "HEALTHCARE_MANAGER",
+      "nameAr": "مدير الرعاية الصحية",
+      "nameEn": "HEALTHCARE_MANAGER",
+      "description": "اعتماد الطلبات وإسناد الخدمة",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "services.manage": "ALL",
+        "providers.view": "ALL",
+        "providers.manage": "ALL",
+        "reports.view": "ALL",
+        "reports.export": "ALL",
+        "cases.approve": "ALL",
+        "cases.assign": "ALL",
+        "service.schedule": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.viewSensitive": "ALL",
+        "beneficiaries.medical.view": "ALL",
+        "beneficiaries.createRequest": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "beneficiaries.edit": "ALL",
+        "requests.claim": "ALL",
+        "requests.release": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "requests.care.return": "ALL",
+        "requests.reassign": "ALL",
+        "tasks.manage": "ALL",
+        "quotations.view": "ALL",
+        "quotations.create": "ALL",
+        "quotations.inviteProviders": "ALL",
+        "quotations.extendDeadline": "ALL",
+        "quotations.close": "ALL",
+        "quotations.compare": "ALL",
+        "quotations.cancel": "ALL",
+        "quotations.selectPreferred": "ALL",
+        "authorization.view": "ALL",
+        "authorization.create": "ALL",
+        "authorization.issue": "ALL",
+        "authorization.cancel": "ALL",
+        "authorization.replace": "ALL",
+        "provider.assignAuthorized": "ALL",
+        "finance.dashboard.view": "ALL",
+        "visits.configure": "ALL",
+        "visits.monitor": "ALL",
+        "visits.schedule": "ALL",
+        "visits.correct": "ALL",
+        "requests.statusLookup": "ALL"
+      },
+      "workflowRole": "manager",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "finance",
+      "code": "FINANCE",
+      "nameAr": "المحاسب",
+      "nameEn": "FINANCE",
+      "description": "المراجعة المالية وحجز التمويل والمعالجة المالية",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "providers.view": "ALL",
+        "reports.view": "ALL",
+        "finance.confirmPayment": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.financial.view": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "quotations.view": "ALL",
+        "finance.dashboard.view": "ALL",
+        "finance.wallets.view": "ALL",
+        "finance.wallets.manage": "ALL",
+        "finance.ledger.view": "ALL",
+        "finance.funding.review": "ALL",
+        "finance.funding.allocate": "ALL",
+        "finance.funding.reserve": "ALL",
+        "finance.funding.release": "ALL",
+        "finance.funding.approve": "ALL",
+        "finance.funding.reject": "ALL",
+        "finance.commitments.view": "ALL",
+        "authorization.view": "ALL"
+      },
+      "workflowRole": "finance",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "executive",
+      "code": "EXECUTIVE_DIRECTOR",
+      "nameAr": "المدير التنفيذي",
+      "nameEn": "EXECUTIVE_DIRECTOR",
+      "description": "الاعتماد النهائي للطلبات",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "reports.view": "ALL",
+        "reports.export": "ALL",
+        "providers.view": "ALL",
+        "services.view": "ALL",
+        "finance.dashboard.view": "ALL",
+        "finance.wallets.view": "ALL",
+        "finance.ledger.view": "ALL",
+        "finance.commitments.view": "ALL",
+        "executive.approvals.view": "ALL",
+        "executive.approvals.approve": "ALL",
+        "executive.approvals.reject": "ALL",
+        "executive.approvals.return": "ALL",
+        "authorization.view": "ALL",
+        "workflow.history.view": "ALL",
+        "quotations.view": "ALL",
+        "visits.monitor": "ALL"
+      },
+      "workflowRole": "executive",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "team",
+      "code": "INTERNAL_MEDICAL_TEAM",
+      "nameAr": "الطاقم الطبي الداخلي",
+      "nameEn": "INTERNAL_MEDICAL_TEAM",
+      "description": "تقديم الخدمة داخليًا",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ASSIGNED",
+        "service.deliver": "ALL",
+        "beneficiaries.view": "ASSIGNED",
+        "service.schedule": "ALL",
+        "workflow.history.view": "ALL"
+      },
+      "workflowRole": "team",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "relations",
+      "code": "PATIENT_RELATIONS",
+      "nameAr": "علاقات المرضى",
+      "nameEn": "PATIENT_RELATIONS",
+      "description": "مراجعة تأكيد المستفيد وتقييمه",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ALL",
+        "services.view": "ALL",
+        "providers.view": "ALL",
+        "reports.view": "ALL",
+        "relations.review": "ALL",
+        "beneficiaries.view": "ALL",
+        "beneficiaries.notes.view": "ALL",
+        "beneficiaries.activity.view": "ALL",
+        "beneficiaries.documents.view": "ALL",
+        "beneficiaries.notes.create": "ALL",
+        "workflow.history.view": "ALL",
+        "comments.internal.create": "ALL",
+        "comments.beneficiary.create": "ALL",
+        "requests.statusLookup": "ALL"
+      },
+      "workflowRole": "relations",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    },
+    {
+      "id": "provider",
+      "code": "EXTERNAL_PROVIDER",
+      "nameAr": "مزود الخدمة الخارجي",
+      "nameEn": "EXTERNAL_PROVIDER",
+      "description": "تقديم الخدمة للطلبات المسندة إليه",
+      "type": "SYSTEM",
+      "status": "active",
+      "permissions": {
+        "cases.view": "ASSIGNED",
+        "service.deliver": "ALL",
+        "providers.view": "ALL",
+        "service.accept": "ALL",
+        "service.schedule": "ALL",
+        "provider.quotations.viewOwn": "ALL",
+        "provider.quotations.createOwn": "ALL",
+        "provider.quotations.editDraftOwn": "ALL",
+        "provider.quotations.submitOwn": "ALL",
+        "provider.quotations.declineOwn": "ALL",
+        "provider.authorization.viewOwn": "ALL",
+        "provider.authorization.acknowledgeOwn": "ALL",
+        "provider.visits.manageOwn": "ALL"
+      },
+      "workflowRole": "provider",
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-01-01T08:00:00.000Z",
+      "migrations": [
+        "phase3-workflow",
+        "phase4-quotations",
+        "phase5-finance",
+        "phase6-executive-export",
+        "task05-visit-plan",
+        "task06-visits",
+        "task09-status-lookup",
+        "task14-organization-identity"
+      ]
+    }
+  ],
+  "defaultSecurityPolicy": {
+    "passwordExpirationEnabled": true,
+    "passwordExpirationDays": 90,
+    "passwordExpirationWarningDays": 7,
+    "minimumPasswordLength": 12,
+    "requireUppercase": true,
+    "requireLowercase": true,
+    "requireNumber": true,
+    "requireSpecialCharacter": true,
+    "preventCommonPasswords": true,
+    "passwordHistoryEnabled": true,
+    "passwordHistoryCount": 5,
+    "minimumPasswordAge": 1,
+    "maxFailedLoginAttempts": 5,
+    "lockoutDuration": 15,
+    "idleTimeoutEnabled": true,
+    "idleTimeoutMinutes": 15,
+    "idleWarningMinutes": 2,
+    "maximumSessionLifetime": 8,
+    "concurrentSessionLimit": 3,
+    "mfaPolicy": "optional",
+    "mfaRequiredRoles": [
+      "admin",
+      "finance"
+    ]
+  },
+  "commonPasswords": [
+    "password",
+    "123456",
+    "12345678",
+    "qwerty",
+    "password123",
+    "admin123",
+    "raha1234",
+    "welcome1",
+    "iloveyou",
+    "p@ssw0rd"
+  ],
+  "securityEventLabels": {
+    "LOGIN_SUCCESS": "تم تسجيل الدخول",
+    "LOGIN_FAILED": "محاولة تسجيل دخول فاشلة",
+    "ACCOUNT_LOCKED": "تم قفل الحساب",
+    "ACCOUNT_UNLOCKED": "تم إلغاء قفل الحساب",
+    "ACCOUNT_SUSPENDED": "تم إيقاف الحساب",
+    "ACCOUNT_ACTIVATED": "تم تفعيل الحساب",
+    "PASSWORD_CHANGED": "تم تغيير كلمة المرور",
+    "PASSWORD_RESET_REQUESTED": "طلب استعادة كلمة المرور",
+    "PASSWORD_EXPIRED": "انتهت صلاحية كلمة المرور",
+    "FORCE_PASSWORD_CHANGE": "إجبار تغيير كلمة المرور",
+    "ROLE_ASSIGNED": "تم إسناد دور",
+    "ROLE_REMOVED": "تمت إزالة دور",
+    "ROLE_CREATED": "تم إنشاء دور",
+    "ROLE_UPDATED": "تم تعديل دور",
+    "ROLE_DELETED": "تم حذف دور",
+    "PERMISSION_CHANGED": "تم تعديل صلاحيات الدور",
+    "SESSION_TERMINATED": "تم إنهاء جلسة",
+    "SECURITY_POLICY_CHANGED": "تم تعديل سياسة الأمان",
+    "MFA_ENABLED": "تفعيل المصادقة متعددة العوامل",
+    "MFA_DISABLED": "إلغاء المصادقة متعددة العوامل",
+    "USER_CREATED": "تم إنشاء مستخدم",
+    "USER_UPDATED": "تم تعديل مستخدم"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "FAST_TRACK_CONFIG_VERSION": 2,
+  "fastTrackEntryOptions": [
+    {
+      "value": "medical_review",
+      "label": "اللجنة الطبية"
+    },
+    {
+      "value": "social_review",
+      "label": "البحث الاجتماعي"
+    },
+    {
+      "value": "manager_approval",
+      "label": "الاعتماد المبدئي (مدير الرعاية الصحية)"
+    }
+  ],
+  "fastTrackPolicySeed": {
+    "enabled": true,
+    "entryStage": "medical_review",
+    "requireApprovedPrevious": true,
+    "configVersion": 2,
+    "updatedAt": "2026-11-04T00:00:00.000Z",
+    "updatedBy": "الإعداد المعتمد من العميل (بيئة تجريبية)"
+  },
+  "skippableStages": [
+    {
+      "status": "new",
+      "label": "التدقيق"
+    },
+    {
+      "status": "medical_review",
+      "label": "اللجنة الطبية"
+    },
+    {
+      "status": "social_review",
+      "label": "البحث الاجتماعي"
+    }
+  ]
+}

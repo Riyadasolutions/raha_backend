@@ -1,0 +1,134 @@
+{
+  "DEFAULT_REPORT_MAX_AGE_DAYS": 5,
+  "documentTypes": {
+    "medical_report": {
+      "id": "medical_report",
+      "label": "التقرير الطبي",
+      "section": "medical",
+      "providerVisible": true,
+      "help": "تقرير صادر من منشأة صحية يوضح الحالة والخدمة المطلوبة، واضح ومختوم."
+    },
+    "prescription": {
+      "id": "prescription",
+      "label": "الوصفة الطبية",
+      "section": "medical",
+      "providerVisible": true,
+      "help": "وصفة طبية سارية توضح اسم الدواء والجرعة."
+    },
+    "rental_contract": {
+      "id": "rental_contract",
+      "label": "عقد الإيجار",
+      "section": "social",
+      "providerVisible": false,
+      "help": "عقد إيجار ساري المفعول باسم المستفيد أو أسرته."
+    },
+    "salary_certificate": {
+      "id": "salary_certificate",
+      "label": "تعريف الراتب",
+      "section": "social",
+      "providerVisible": false,
+      "help": "تعريف راتب حديث من جهة العمل."
+    },
+    "disability_card": {
+      "id": "disability_card",
+      "label": "بطاقة الإعاقة",
+      "section": "social",
+      "providerVisible": false,
+      "help": "بطاقة إثبات الإعاقة الصادرة من الجهة المختصة."
+    },
+    "social_security_proof": {
+      "id": "social_security_proof",
+      "label": "إثبات الضمان الاجتماعي",
+      "section": "social",
+      "providerVisible": false,
+      "help": "مشهد أو إثبات استحقاق الضمان الاجتماعي."
+    },
+    "additional": {
+      "id": "additional",
+      "label": "مستند إضافي",
+      "section": "additional",
+      "providerVisible": false,
+      "help": "أي مستند مساند تراه مفيدًا لدراسة الطلب (اختياري)."
+    }
+  },
+  "noRequirements": {
+    "medicalReport": false,
+    "prescription": false,
+    "needDescription": false,
+    "reportMaxAgeDays": 5,
+    "extraDocs": []
+  },
+  "sectionTitles": {
+    "medical": "المستندات الطبية",
+    "social": "المستندات الاجتماعية",
+    "additional": "مستندات إضافية"
+  },
+  "socialRules": [
+    {
+      "id": "rent-contract",
+      "docType": "rental_contract",
+      "field": "housingType",
+      "operator": "equals",
+      "value": "إيجار",
+      "required": true,
+      "active": true,
+      "reason": "مطلوب لأنك اخترت أن نوع السكن إيجار."
+    },
+    {
+      "id": "shared-contract",
+      "docType": "rental_contract",
+      "field": "housingType",
+      "operator": "equals",
+      "value": "سكن مشترك",
+      "required": true,
+      "active": false,
+      "reason": "مطلوب لأنك اخترت أن نوع السكن سكن مشترك."
+    },
+    {
+      "id": "salary-cert",
+      "docType": "salary_certificate",
+      "field": "employmentStatus",
+      "operator": "equals",
+      "value": "موظف",
+      "required": true,
+      "active": true,
+      "reason": "مطلوب لأن الحالة الوظيفية المحددة هي موظف."
+    },
+    {
+      "id": "disability-card",
+      "docType": "disability_card",
+      "field": "hasDisability",
+      "operator": "equals",
+      "value": "نعم",
+      "required": true,
+      "active": true,
+      "reason": "مطلوب لأنك أجبت بوجود إعاقة."
+    },
+    {
+      "id": "social-security",
+      "docType": "social_security_proof",
+      "field": "socialSecurity",
+      "operator": "equals",
+      "value": "نعم",
+      "required": true,
+      "active": true,
+      "reason": "مطلوب لأنك أجبت بأنك من مستفيدي الضمان الاجتماعي."
+    }
+  ],
+  "uploadRules": {
+    "maxBytes": 5242880,
+    "maxLabel": "٥ ميجابايت",
+    "extensions": [
+      "pdf",
+      "jpg",
+      "jpeg",
+      "png"
+    ],
+    "mimes": [
+      "application/pdf",
+      "image/jpeg",
+      "image/png"
+    ],
+    "acceptLabel": "PDF أو JPG أو JPEG أو PNG"
+  }
+}

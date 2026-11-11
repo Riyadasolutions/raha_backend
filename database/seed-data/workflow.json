@@ -1,0 +1,582 @@
+{
+  "workflowSteps": [
+    "التسجيل",
+    "التدقيق",
+    "اللجنة الطبية",
+    "البحث الاجتماعي",
+    "الاعتماد المبدئي",
+    "الاعتماد النهائي",
+    "التعيين",
+    "تقديم الخدمة",
+    "علاقات المرضى",
+    "المالية",
+    "الأرشفة"
+  ],
+  "stepIndex": {
+    "returned": 0,
+    "new": 1,
+    "medical_review": 2,
+    "social_review": 3,
+    "manager_approval": 4,
+    "preliminary_approved": 5,
+    "assigned": 6,
+    "scheduled": 7,
+    "in_progress": 7,
+    "completed": 8,
+    "finance_review": 9,
+    "archived": 10,
+    "rejected": 1,
+    "awaiting_quotation": 2
+  },
+  "actions": [
+    {
+      "key": "audit_approve",
+      "perm": "cases.review",
+      "label": "اعتماد التدقيق",
+      "roles": [
+        "auditor"
+      ],
+      "from": "new",
+      "to": "medical_review",
+      "kind": "advance",
+      "form": "confirm",
+      "activity": "اعتمد المدقق الطلب وأحاله للمراجعة الطبية",
+      "beneficiaryText": "طلبك قيد المراجعة."
+    },
+    {
+      "key": "audit_return",
+      "perm": "cases.return",
+      "label": "إعادة الطلب للتعديل",
+      "roles": [
+        "auditor"
+      ],
+      "from": "new",
+      "to": "returned",
+      "kind": "return",
+      "activity": "أرجع المدقق الطلب للمستفيد للتعديل",
+      "beneficiaryText": "طلبك يحتاج إلى تعديل."
+    },
+    {
+      "key": "audit_reject",
+      "perm": "cases.reject",
+      "label": "رفض الطلب",
+      "roles": [
+        "auditor"
+      ],
+      "from": "new",
+      "to": "rejected",
+      "kind": "reject",
+      "activity": "رفض المدقق الطلب",
+      "beneficiaryText": "لم يتم قبول طلبك."
+    },
+    {
+      "key": "medical_approve",
+      "perm": "medical.approve",
+      "label": "كتابة الرأي الطبي والإحالة للباحث الاجتماعي",
+      "roles": [
+        "medical"
+      ],
+      "from": "medical_review",
+      "to": "social_review",
+      "kind": "advance",
+      "form": "medical",
+      "activity": "كتب الأخصائي الطبي الرأي الطبي وحدد مزود الخدمة والسعر وأحال الطلب للباحث الاجتماعي"
+    },
+    {
+      "key": "medical_quotation",
+      "perm": "medical.approve",
+      "label": "كتابة المطلوب الطبي وطلب عروض أسعار من مزودي الخدمة",
+      "roles": [
+        "medical"
+      ],
+      "from": "medical_review",
+      "to": "awaiting_quotation",
+      "kind": "advance",
+      "form": "medical",
+      "activity": "كتب الأخصائي الطبي المطلوب الطبي وطلب عروض أسعار من مزودي الخدمة"
+    },
+    {
+      "key": "medical_return",
+      "perm": "medical.return",
+      "label": "طلب استكمال من المستفيد",
+      "roles": [
+        "medical"
+      ],
+      "from": "medical_review",
+      "to": "returned",
+      "kind": "return",
+      "activity": "أرجع الأخصائي الطبي الطلب للمستفيد للتعديل",
+      "beneficiaryText": "طلبك يحتاج إلى تعديل."
+    },
+    {
+      "key": "social_complete",
+      "perm": "social.approve",
+      "label": "اعتماد البحث الاجتماعي وإحالته",
+      "roles": [
+        "social"
+      ],
+      "from": "social_review",
+      "to": "manager_approval",
+      "kind": "advance",
+      "form": "social",
+      "activity": "أكمل الباحث الاجتماعي التقييم وأحاله لمدير الرعاية الصحية"
+    },
+    {
+      "key": "social_return",
+      "perm": "requests.social.return",
+      "label": "طلب استكمال من المستفيد",
+      "roles": [
+        "social"
+      ],
+      "from": "social_review",
+      "to": "returned",
+      "kind": "return",
+      "activity": "أعاد الباحث الاجتماعي الطلب للمستفيد لاستكمال البيانات الاجتماعية",
+      "beneficiaryText": "طلبك يحتاج إلى تعديل."
+    },
+    {
+      "key": "care_approve",
+      "perm": "cases.approve",
+      "label": "الموافقة على الطلب",
+      "roles": [
+        "manager"
+      ],
+      "from": "manager_approval",
+      "to": "preliminary_approved",
+      "kind": "advance",
+      "form": "care",
+      "activity": "منح مدير الرعاية الصحية الاعتماد المبدئي للطلب",
+      "beneficiaryText": "تمت الموافقة المبدئية على طلبك، وجارٍ استكمال الإجراءات."
+    },
+    {
+      "key": "care_send_back",
+      "perm": "requests.care.return",
+      "label": "إعادة للمراجعة",
+      "roles": [
+        "manager"
+      ],
+      "from": "manager_approval",
+      "to": "medical_review",
+      "kind": "send_back",
+      "activity": "أعاد مدير الرعاية الصحية الطلب للمراجعة الداخلية"
+    },
+    {
+      "key": "quotation_complete",
+      "perm": "quotations.selectPreferred",
+      "label": "استكمال التسعير والإحالة للبحث الاجتماعي",
+      "roles": [
+        "medical"
+      ],
+      "from": "awaiting_quotation",
+      "to": "social_review",
+      "kind": "advance",
+      "requires": "quotationSelected",
+      "activity": "اختير العرض المناسب (توصية) وأحيل الطلب للبحث الاجتماعي"
+    },
+    {
+      "key": "manager_assign",
+      "perm": "cases.assign",
+      "label": "إسناد الخدمة",
+      "roles": [
+        "manager"
+      ],
+      "from": "preliminary_approved",
+      "to": "assigned",
+      "kind": "advance",
+      "requires": "noQuotation",
+      "activity": "أسند مدير الرعاية الصحية الخدمة لمقدم الخدمة المحدد",
+      "beneficiaryText": "تم اعتماد طلبك."
+    },
+    {
+      "key": "manager_reject",
+      "perm": "cases.approve",
+      "label": "رفض الطلب",
+      "roles": [
+        "manager"
+      ],
+      "from": "manager_approval",
+      "to": "rejected",
+      "kind": "reject",
+      "activity": "رفض مدير الرعاية الصحية الطلب",
+      "beneficiaryText": "لم يتم قبول طلبك."
+    },
+    {
+      "key": "provider_accept",
+      "perm": "service.accept",
+      "label": "تأكيد استلام الطلب",
+      "roles": [
+        "provider"
+      ],
+      "from": "assigned",
+      "to": "assigned",
+      "kind": "advance",
+      "activity": "أكد مقدم الخدمة استلام الطلب",
+      "requires": "providerPending"
+    },
+    {
+      "key": "schedule",
+      "perm": "service.schedule",
+      "label": "تحديد موعد الخدمة",
+      "roles": [
+        "team",
+        "manager",
+        "provider"
+      ],
+      "from": "assigned",
+      "to": "scheduled",
+      "kind": "advance",
+      "activity": "تم تحديد موعد الخدمة",
+      "beneficiaryText": "تم تحديد موعد الخدمة.",
+      "requires": "providerReady"
+    },
+    {
+      "key": "start_service",
+      "perm": "service.deliver",
+      "label": "بدء تقديم الخدمة",
+      "roles": [
+        "team",
+        "provider"
+      ],
+      "from": "scheduled",
+      "to": "in_progress",
+      "kind": "advance",
+      "activity": "بدأ الفريق تقديم الخدمة",
+      "beneficiaryText": "الخدمة قيد التنفيذ."
+    },
+    {
+      "key": "complete_service",
+      "perm": "service.deliver",
+      "label": "إنهاء تقديم الخدمة",
+      "roles": [
+        "team",
+        "provider"
+      ],
+      "from": "in_progress",
+      "to": "completed",
+      "kind": "advance",
+      "activity": "أنهى الفريق تقديم الخدمة",
+      "beneficiaryText": "تم تقديم الخدمة. يرجى تأكيد استلام الخدمة وتقييمها."
+    },
+    {
+      "key": "relations_review",
+      "perm": "relations.review",
+      "label": "اعتماد تأكيد وتقييم المستفيد",
+      "roles": [
+        "relations"
+      ],
+      "from": "completed",
+      "to": "finance_review",
+      "kind": "advance",
+      "activity": "راجعت علاقات المرضى تأكيد المستفيد وتقييمه وأحالت الطلب للمالية",
+      "requires": "serviceConfirmed"
+    },
+    {
+      "key": "finance_complete",
+      "perm": "finance.confirmPayment",
+      "label": "إكمال المعالجة المالية والأرشفة",
+      "roles": [
+        "finance"
+      ],
+      "from": "finance_review",
+      "to": "archived",
+      "kind": "advance",
+      "activity": "أكملت المالية المعالجة وتمت أرشفة الطلب",
+      "beneficiaryText": "اكتمل طلبك."
+    }
+  ],
+  "beneficiaryStatusOf": {
+    "new": "under_review",
+    "preliminary_approved": "prelim_approved",
+    "medical_review": "under_review",
+    "social_review": "under_review",
+    "manager_approval": "under_review",
+    "returned": "needs_edit",
+    "rejected": "not_accepted",
+    "assigned": "approved",
+    "scheduled": "scheduled",
+    "in_progress": "in_service",
+    "completed": "delivered",
+    "finance_review": "delivered",
+    "archived": "done",
+    "awaiting_quotation": "processing"
+  },
+  "beneficiaryStatusLabel": {
+    "under_review": "قيد المراجعة",
+    "needs_edit": "مطلوب تعديل الطلب",
+    "not_accepted": "لم يتم قبول الطلب",
+    "approved": "تم اعتماد الطلب",
+    "prelim_approved": "تمت الموافقة المبدئية",
+    "scheduled": "تم تحديد موعد الخدمة",
+    "in_service": "الخدمة قيد التنفيذ",
+    "delivered": "تم تقديم الخدمة",
+    "done": "مكتمل",
+    "processing": "قيد استكمال الإجراءات"
+  },
+  "beneficiaryProgress": [
+    "تم تقديم الطلب",
+    "قيد المراجعة",
+    "تم اعتماد الطلب",
+    "تم تحديد الموعد",
+    "تقديم الخدمة",
+    "مكتمل"
+  ],
+  "beneficiaryProgressIndex": {
+    "prelim_approved": 2,
+    "needs_edit": 1,
+    "under_review": 1,
+    "not_accepted": 1,
+    "approved": 2,
+    "scheduled": 3,
+    "in_service": 4,
+    "delivered": 4,
+    "done": 5,
+    "processing": 1
+  },
+  "stageRole": {
+    "new": [
+      "auditor"
+    ],
+    "medical_review": [
+      "medical"
+    ],
+    "awaiting_quotation": [
+      "medical",
+      "manager"
+    ],
+    "social_review": [
+      "social"
+    ],
+    "manager_approval": [
+      "manager"
+    ],
+    "preliminary_approved": [
+      "finance",
+      "manager"
+    ],
+    "assigned": [
+      "team",
+      "provider"
+    ],
+    "scheduled": [
+      "team",
+      "provider"
+    ],
+    "in_progress": [
+      "team",
+      "provider"
+    ],
+    "completed": [
+      "relations"
+    ],
+    "finance_review": [
+      "finance"
+    ]
+  },
+  "statusGroups": {
+    "new": {
+      "label": "طلبات جديدة",
+      "statuses": [
+        "new"
+      ]
+    },
+    "medical": {
+      "label": "اللجنة الطبية",
+      "statuses": [
+        "medical_review",
+        "awaiting_quotation"
+      ]
+    },
+    "social": {
+      "label": "البحث الاجتماعي",
+      "statuses": [
+        "social_review"
+      ]
+    },
+    "care": {
+      "label": "الاعتماد المبدئي",
+      "statuses": [
+        "manager_approval"
+      ]
+    },
+    "relations": {
+      "label": "علاقات المرضى",
+      "statuses": [
+        "completed"
+      ]
+    },
+    "finance": {
+      "label": "المالية",
+      "statuses": [
+        "finance_review"
+      ]
+    },
+    "under-review": {
+      "label": "قيد المراجعة",
+      "statuses": [
+        "new",
+        "medical_review",
+        "awaiting_quotation",
+        "social_review",
+        "manager_approval"
+      ]
+    },
+    "prelim": {
+      "label": "معتمدة مبدئيًا",
+      "statuses": [
+        "preliminary_approved"
+      ]
+    },
+    "returned": {
+      "label": "معادة للتعديل",
+      "statuses": [
+        "returned"
+      ]
+    },
+    "in-service": {
+      "label": "الخدمة جارية",
+      "statuses": [
+        "assigned",
+        "scheduled",
+        "in_progress"
+      ]
+    },
+    "completed": {
+      "label": "مكتملة",
+      "statuses": [
+        "completed",
+        "finance_review",
+        "archived"
+      ]
+    },
+    "archived": {
+      "label": "مؤرشفة",
+      "statuses": [
+        "archived"
+      ]
+    },
+    "rejected": {
+      "label": "مرفوضة",
+      "statuses": [
+        "rejected"
+      ]
+    }
+  },
+  "OTHER": "أخرى",
+  "PARTIAL": "مساهمة جزئية من المستفيد",
+  "auditReturnReasons": [
+    "بيانات ناقصة أو غير مطابقة",
+    "تقرير طبي غير واضح",
+    "تقرير طبي غير حديث",
+    "مستند مطلوب غير مرفق",
+    "أخرى"
+  ],
+  "medicalDecisions": [
+    {
+      "value": "مناسب طبيًا",
+      "outcome": "advance"
+    },
+    {
+      "value": "يحتاج إلى تسعير من مقدم خدمة",
+      "outcome": "advance",
+      "quotation": true
+    },
+    {
+      "value": "يحتاج إلى استكمال معلومات",
+      "outcome": "return"
+    },
+    {
+      "value": "غير مناسب طبيًا",
+      "outcome": "reject"
+    }
+  ],
+  "rejectReasonList": [
+    "غير مستحق حسب سياسة الجمعية",
+    "الخدمة غير متاحة",
+    "خارج نطاق عمل الجمعية",
+    "أخرى"
+  ],
+  "reviewStageLabels": {
+    "audit": "قرار التدقيق",
+    "medical": "التقييم الطبي",
+    "social": "التقييم الاجتماعي",
+    "care": "قرار مدير الرعاية"
+  },
+  "reviewStages": [
+    {
+      "status": "new",
+      "role": "auditor",
+      "review": "audit"
+    },
+    {
+      "status": "medical_review",
+      "role": "medical",
+      "review": "medical"
+    },
+    {
+      "status": "social_review",
+      "role": "social",
+      "review": "social"
+    },
+    {
+      "status": "manager_approval",
+      "role": "manager",
+      "review": "care"
+    }
+  ],
+  "sendBackReasons": [
+    "يحتاج إلى مراجعة طبية إضافية",
+    "يحتاج إلى استكمال البحث الاجتماعي",
+    "أخرى"
+  ],
+  "slaHours": {
+    "new": null,
+    "medical_review": null,
+    "social_review": null,
+    "manager_approval": null
+  },
+  "socialRecommendations": [
+    "تحمل الجمعية للتكلفة",
+    "الاستفادة من الخصم",
+    "مساهمة جزئية من المستفيد",
+    "أخرى"
+  ],
+  "stageIds": {
+    "new": "AUDIT_REVIEW",
+    "medical_review": "MEDICAL_REVIEW",
+    "social_review": "SOCIAL_REVIEW",
+    "manager_approval": "CARE_APPROVAL",
+    "preliminary_approved": "PENDING_NEXT_APPROVAL",
+    "returned": "RETURNED",
+    "rejected": "REJECTED",
+    "assigned": "ASSIGNED",
+    "scheduled": "SCHEDULED",
+    "in_progress": "IN_SERVICE",
+    "completed": "COMPLETED",
+    "finance_review": "FINANCE_REVIEW",
+    "archived": "ARCHIVED",
+    "awaiting_quotation": "AWAITING_QUOTATION"
+  },
+  "stageLabels": {
+    "new": "تدقيق الطلب",
+    "medical_review": "المراجعة الطبية",
+    "social_review": "البحث الاجتماعي",
+    "manager_approval": "اعتماد مدير الرعاية",
+    "preliminary_approved": "بانتظار الاعتماد التالي",
+    "returned": "معاد للتعديل",
+    "rejected": "مرفوض",
+    "assigned": "التعيين",
+    "scheduled": "تم تحديد الموعد",
+    "in_progress": "تقديم الخدمة",
+    "completed": "مكتمل",
+    "finance_review": "المعالجة المالية",
+    "archived": "مؤرشف",
+    "awaiting_quotation": "بانتظار عروض الأسعار"
+  },
+  "taskStatusLabels": {
+    "new": "جديدة",
+    "in_progress": "قيد التنفيذ",
+    "completed": "مكتملة",
+    "overdue": "متأخرة",
+    "cancelled": "ملغاة"
+  }
+}

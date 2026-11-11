@@ -1,0 +1,544 @@
+{
+  "legacyServiceIds": {
+    "nursing": "SRV-001",
+    "physio": "SRV-002",
+    "dialysis": "SRV-006",
+    "surgery": "SRV-007",
+    "oncology": "SRV-008",
+    "cardio": "SRV-009",
+    "medicines": "SRV-010",
+    "supplies": "SRV-011",
+    "transport": "SRV-012"
+  },
+  "legacyServiceNames": {
+    "علاج طبيعي": "SRV-002"
+  },
+  "providerTypes": [
+    "مركز رعاية منزلية",
+    "مستشفى",
+    "مركز تأهيل",
+    "مورد أجهزة طبية"
+  ],
+  "seedAudit": [
+    {
+      "id": "au1",
+      "at": "2026-11-08T18:19:30.801Z",
+      "user": "سارة العتيبي",
+      "role": "مدير النظام",
+      "action": "تم إنشاء مزود خدمة",
+      "recordType": "مقدم خدمة",
+      "recordId": "PRV-0005"
+    },
+    {
+      "id": "au2",
+      "at": "2026-11-07T18:19:30.801Z",
+      "user": "محمد الحربي",
+      "role": "مدقق الطلبات",
+      "action": "تم اعتماد طلب",
+      "recordType": "طلب",
+      "recordId": "REQ-000122"
+    }
+  ],
+  "seedProviders": [
+    {
+      "id": "PRV-0001",
+      "name": "مجمع التعافي الطبي",
+      "type": "مستشفى",
+      "license": "LIC-00017",
+      "registry": "10000155821",
+      "phone": "0112345001",
+      "email": "info@prv-0001.example.sa",
+      "city": "الرياض",
+      "district": "العليا",
+      "address": "الرياض — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0112345001",
+        "email": "contact@prv-0001.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-001",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        },
+        {
+          "serviceId": "SRV-004",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0002",
+      "name": "مركز حركة للتأهيل",
+      "type": "مركز تأهيل",
+      "license": "LIC-00027",
+      "registry": "10000255821",
+      "phone": "0122345002",
+      "email": "info@prv-0002.example.sa",
+      "city": "جدة",
+      "district": "العليا",
+      "address": "جدة — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0122345002",
+        "email": "contact@prv-0002.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-002",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0003",
+      "name": "شركة الأجهزة الطبية المتقدمة",
+      "type": "مورد أجهزة طبية",
+      "license": "LIC-00037",
+      "registry": "10000355821",
+      "phone": "0132345003",
+      "email": "info@prv-0003.example.sa",
+      "city": "الدمام",
+      "district": "العليا",
+      "address": "الدمام — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0132345003",
+        "email": "contact@prv-0003.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-005",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0004",
+      "name": "مركز بلسم للرعاية",
+      "type": "مركز رعاية منزلية",
+      "license": "LIC-00047",
+      "registry": "10000455821",
+      "phone": "0122345004",
+      "email": "info@prv-0004.example.sa",
+      "city": "مكة المكرمة",
+      "district": "العليا",
+      "address": "مكة المكرمة — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0122345004",
+        "email": "contact@prv-0004.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-001",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        },
+        {
+          "serviceId": "SRV-003",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "inactive",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0005",
+      "name": "مركز عناية للرعاية المنزلية",
+      "type": "مركز رعاية منزلية",
+      "license": "LIC-00057",
+      "registry": "10000555821",
+      "phone": "0112345005",
+      "email": "info@prv-0005.example.sa",
+      "city": "الرياض",
+      "district": "العليا",
+      "address": "الرياض — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0112345005",
+        "email": "contact@prv-0005.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-001",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        },
+        {
+          "serviceId": "SRV-002",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        },
+        {
+          "serviceId": "SRV-003",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0006",
+      "name": "مركز الأمل للرعاية المنزلية",
+      "type": "مركز رعاية منزلية",
+      "license": "LIC-00067",
+      "registry": "10000655821",
+      "phone": "0112345006",
+      "email": "info@prv-0006.example.sa",
+      "city": "الرياض",
+      "district": "العليا",
+      "address": "الرياض — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0112345006",
+        "email": "contact@prv-0006.example.sa"
+      },
+      "services": [
+        {
+          "serviceId": "SRV-001",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        },
+        {
+          "serviceId": "SRV-006",
+          "addedAt": "2026-08-11T18:19:30.801Z"
+        }
+      ],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    },
+    {
+      "id": "PRV-0007",
+      "name": "عيادة الرعاية المتنقلة",
+      "type": "مركز رعاية منزلية",
+      "license": "LIC-00077",
+      "registry": "10000755821",
+      "phone": "0112345007",
+      "email": "info@prv-0007.example.sa",
+      "city": "",
+      "district": "العليا",
+      "address": " — طريق الملك فهد",
+      "contact": {
+        "name": "مسؤول التواصل",
+        "mobile": "0112345007",
+        "email": "contact@prv-0007.example.sa"
+      },
+      "services": [],
+      "status": "active",
+      "notes": "",
+      "internalNotes": [],
+      "createdAt": "2026-05-13T18:19:30.801Z",
+      "updatedAt": "2026-11-04T18:19:30.801Z"
+    }
+  ],
+  "seedServices": [
+    {
+      "id": "SRV-001",
+      "name": "تمريض منزلي",
+      "category": "رعاية تمريضية",
+      "description": "زيارات تمريضية منزلية ومتابعة الحالة.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 3,
+      "nameEn": "Home nursing",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "multiple_visits"
+    },
+    {
+      "id": "SRV-002",
+      "name": "علاج طبيعي منزلي",
+      "category": "تأهيل",
+      "description": "جلسات علاج طبيعي وتأهيل في المنزل.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 2,
+      "nameEn": "Home physiotherapy",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "multiple_visits"
+    },
+    {
+      "id": "SRV-003",
+      "name": "رعاية الجروح",
+      "category": "رعاية تمريضية",
+      "description": "تغيير الضمادات ومتابعة الجروح.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": false,
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "multiple_visits"
+    },
+    {
+      "id": "SRV-004",
+      "name": "زيارة طبيب",
+      "category": "رعاية طبية",
+      "description": "زيارة طبيب منزلية للتقييم.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": false,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": false,
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "one_time"
+    },
+    {
+      "id": "SRV-005",
+      "name": "أجهزة طبية",
+      "category": "أجهزة ومستلزمات",
+      "description": "توفير أجهزة طبية منزلية.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": false,
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "one_time"
+    },
+    {
+      "id": "SRV-006",
+      "name": "غسيل كلى منزلي",
+      "category": "رعاية طبية",
+      "description": "جلسات غسيل كلى في المنزل.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 1,
+      "nameEn": "Home dialysis",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "multiple_visits"
+    },
+    {
+      "id": "SRV-007",
+      "name": "عمليات جراحية",
+      "category": "رعاية طبية",
+      "description": "دعم العمليات الجراحية.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 4,
+      "nameEn": "Surgery",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "one_time"
+    },
+    {
+      "id": "SRV-008",
+      "name": "الأورام والأمراض السرطانية",
+      "category": "رعاية طبية",
+      "description": "دعم علاج الأورام.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 5,
+      "nameEn": "Oncology",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      }
+    },
+    {
+      "id": "SRV-009",
+      "name": "أمراض القلب",
+      "category": "رعاية طبية",
+      "description": "دعم علاج أمراض القلب.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 6,
+      "nameEn": "Cardiology",
+      "requirements": {
+        "medicalReport": true,
+        "prescription": false,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      }
+    },
+    {
+      "id": "SRV-010",
+      "name": "الأدوية",
+      "category": "أدوية",
+      "description": "توفير الأدوية الموصوفة.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 7,
+      "nameEn": "Medicines",
+      "requirements": {
+        "medicalReport": false,
+        "prescription": true,
+        "needDescription": false,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "one_time"
+    },
+    {
+      "id": "SRV-011",
+      "name": "المستلزمات الطبية",
+      "category": "أجهزة ومستلزمات",
+      "description": "توفير المستلزمات الطبية.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 8,
+      "nameEn": "Medical supplies",
+      "requirements": {
+        "medicalReport": false,
+        "prescription": false,
+        "needDescription": true,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      },
+      "deliveryType": "one_time"
+    },
+    {
+      "id": "SRV-012",
+      "name": "النقل الطبي",
+      "category": "نقل طبي",
+      "description": "نقل طبي للمواعيد والعلاج.",
+      "status": "active",
+      "requiresMedicalReport": true,
+      "requiresDocuments": true,
+      "allowInternal": true,
+      "allowExternal": true,
+      "createdAt": "2026-04-23T18:19:30.800Z",
+      "updatedAt": "2026-10-30T18:19:30.800Z",
+      "portalVisible": true,
+      "sortOrder": 9,
+      "nameEn": "Medical transport",
+      "requirements": {
+        "medicalReport": false,
+        "prescription": false,
+        "needDescription": true,
+        "reportMaxAgeDays": 5,
+        "extraDocs": []
+      }
+    }
+  ],
+  "serviceCategories": [
+    "رعاية تمريضية",
+    "تأهيل",
+    "رعاية طبية",
+    "أجهزة ومستلزمات",
+    "أدوية",
+    "نقل طبي"
+  ]
+}
