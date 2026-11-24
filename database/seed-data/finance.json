@@ -56,7 +56,8 @@
     "RELEASED": "محرر",
     "CONVERTED": "محول إلى التزام",
     "CANCELLED": "ملغي",
-    "REVERSED": "التزام معكوس"
+    "REVERSED": "التزام معكوس",
+    "SETTLED": "مسدد"
   },
   "seedLedger": [
     {

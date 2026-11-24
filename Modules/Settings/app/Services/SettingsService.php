@@ -35,8 +35,16 @@ class SettingsService
             return false;
         }
         $bytes = base64_decode($m[1], true);
+        if ($bytes === false || strlen($bytes) > self::MAX_IMAGE_BYTES) {
+            return false;
+        }
+        // The bytes must really be the declared type (a text file labelled image/png would later break PDF generation).
+        $isPng = str_starts_with($bytes, "‰PNG
+
+");
+        $isJpeg = str_starts_with($bytes, "ÿØÿ");
 
-        return $bytes !== false && strlen($bytes) <= self::MAX_IMAGE_BYTES;
+        return str_starts_with($v, 'data:image/png;') ? $isPng : $isJpeg;
     }
 
     public function organization(): array

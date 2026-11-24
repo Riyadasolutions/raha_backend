@@ -66,16 +66,16 @@ abstract class FinanceTestCase extends TestCase
         $this->fin('reserve', [], 'finance', $id)->assertOk();
     }
 
-    protected function toExecutiveApproved(string $id = self::ID): void
+    protected function toExecutiveApproved(string $id = self::ID, ?array $allocs = null): void
     {
-        $this->toReserved(null, $id);
+        $this->toReserved($allocs, $id);
         $this->fin('executive/approve', ['comment' => '', 'confirmed' => true], 'executive', $id)->assertOk();
     }
 
     /** @return array the issued letter (front ServiceAuthorization) */
-    protected function toIssued(array $letter = self::LETTER, string $id = self::ID): array
+    protected function toIssued(array $letter = self::LETTER, string $id = self::ID, ?array $allocs = null): array
     {
-        $this->toExecutiveApproved($id);
+        $this->toExecutiveApproved($id, $allocs);
 
         return $this->fin('authorization', $letter, 'manager', $id)->assertCreated()->json('data');
     }

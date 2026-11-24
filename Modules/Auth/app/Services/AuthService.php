@@ -124,20 +124,75 @@ class AuthService
         if (User::query()->where('national_id', $idNumber)->exists() || Beneficiary::query()->where('national_id', $idNumber)->where('has_portal_account', true)->exists()) {
             throw new DomainRuleException('يوجد حساب مسجل بهذا الرقم.');
         }
-        $user = DB::transaction(function () use ($input, $idNumber) {
-            $beneficiary = Beneficiary::query()->where('national_id', $idNumber)->first();
-            if (! $beneficiary) {
-                $beneficiary = Beneficiary::query()->create([
-                    'id' => Sequence::beneficiaryId(), 'first_name' => trim($input['firstName']), 'family_name' => trim($input['familyName']),
-                    'national_id' => $idNumber, 'id_type' => $input['idType'], 'nationality' => $input['idType'] === 'هوية وطنية' ? 'سعودي' : '',
-                ])->refresh();
-            }
-            $beneficiary->update(['has_portal_account' => true]);
+        // A record created by staff (or earlier requests) must never be claimed by national id alone:
+        // the registrant must prove ownership with the mobile on file plus a one-time code sent to it.
+        $existing = Beneficiary::query()->where('national_id', $idNumber)->first();
+        if ($existing) {
+            $this->proveOwnership($existing, (string) ($input['mobile'] ?? ''), (string) ($input['code'] ?? ''));
+        }
+        try {
+            $user = DB::transaction(function () use ($input, $idNumber) {
+                $beneficiary = Beneficiary::query()->where('national_id', $idNumber)->lockForUpdate()->first();
+                if (! $beneficiary) {
+                    $beneficiary = Beneficiary::query()->create([
+                        'id' => Sequence::beneficiaryId(), 'first_name' => trim($input['firstName']), 'family_name' => trim($input['familyName']),
+                        'national_id' => $idNumber, 'id_type' => $input['idType'], 'nationality' => $input['idType'] === 'هوية وطنية' ? 'سعودي' : '',
+                    ])->refresh();
+                }
+                $beneficiary->update(['has_portal_account' => true]);
 
-            return self::createBeneficiaryUser($beneficiary, $input['password']);
-        });
+                return self::createBeneficiaryUser($beneficiary, $input['password']);
+            });
+        } catch (\Illuminate\Database\UniqueConstraintViolationException) {
+            // A concurrent registration for the same id won the race; the unique keys guarantee a single account.
+            throw new DomainRuleException('يوجد حساب مسجل بهذا الرقم.');
+        }
 
         return $this->signIn($user);
+    }
+
+    /**
+     * Step 1 (no code): the mobile must match the record, then an OTP is sent to it (422 code OTP_SENT).
+     * Step 2 (with code): the OTP is verified; on success the caller continues the registration.
+     * Every failure on a record uses one neutral message so the endpoint does not reveal which part was wrong.
+     */
+    private function proveOwnership(Beneficiary $b, string $mobile, string $code): void
+    {
+        $norm = fn (string $v) => preg_replace('/\D+/', '', \App\Support\Text::asciiDigits($v));
+        $neutral = 'تعذّر التحقق من بيانات التسجيل. تأكد من رقم الجوال المسجل لدى الجمعية أو تواصل معها.';
+        if (trim($mobile) === '') {
+            throw new DomainRuleException('هذه الهوية مسجلة لدى الجمعية. أدخل رقم الجوال المسجل لدينا لإكمال التحقق.', 422, ['code' => 'OWNERSHIP_REQUIRED']);
+        }
+        if ($norm((string) $b->mobile) === '' || $norm($mobile) !== $norm((string) $b->mobile)) {
+            throw new DomainRuleException($neutral, 422, ['code' => 'OWNERSHIP_FAILED']);
+        }
+        $subject = 'reg-'.$b->id;
+        if (trim($code) === '') {
+            // Bounds both SMS flooding of the real owner and brute-forcing across freshly issued codes.
+            if (\App\Support\Security\DevMode::sendLimitReached($subject, 'registration')) {
+                throw new DomainRuleException('تم تجاوز عدد رموز التحقق المسموح بها. حاول لاحقًا أو تواصل مع الجمعية.', 429, ['code' => 'OTP_RATE_LIMITED']);
+            }
+            $otp = (string) random_int(100000, 999999);
+            DB::table('otp_codes')->where('user_id', $subject)->where('purpose', 'registration')->whereNull('used_at')->update(['used_at' => now()]);
+            DB::table('otp_codes')->insert([
+                'user_id' => $subject, 'purpose' => 'registration', 'code_hash' => Hash::make($otp), 'attempts' => 0,
+                'expires_at' => now()->addMinutes((int) config('raha.otp.ttl_minutes')), 'created_at' => now(), 'updated_at' => now(),
+            ]);
+            \App\Support\Security\DevMode::sms((string) $b->mobile, 'رمز التحقق لإنشاء حسابك في راحة', $otp);
+            throw new DomainRuleException('تم إرسال رمز التحقق إلى الجوال المسجل. أدخله لإكمال التسجيل.', 422, ['code' => 'OTP_SENT'] + (config('raha.dev_accounts') ? ['debug' => $otp] : []));
+        }
+        $row = DB::table('otp_codes')->where('user_id', $subject)->where('purpose', 'registration')->whereNull('used_at')->latest('id')->first();
+        if (! $row || now()->gt($row->expires_at) || $row->attempts >= (int) config('raha.otp.max_attempts')) {
+            throw new DomainRuleException('رمز التحقق غير صالح أو منتهي الصلاحية.', 422, ['code' => 'OTP_INVALID']);
+        }
+        if (! Hash::check(trim($code), $row->code_hash)) {
+            DB::table('otp_codes')->where('id', $row->id)->increment('attempts');
+            throw new DomainRuleException('رمز التحقق غير صحيح.', 422, ['code' => 'OTP_INVALID']);
+        }
+        // Atomic single use: of two concurrent requests holding the same valid code only one consumes it.
+        if (DB::table('otp_codes')->where('id', $row->id)->whereNull('used_at')->update(['used_at' => now()]) !== 1) {
+            throw new DomainRuleException('رمز التحقق غير صالح أو منتهي الصلاحية.', 422, ['code' => 'OTP_INVALID']);
+        }
     }
 
     public static function createBeneficiaryUser(Beneficiary $b, string $password): User
@@ -167,12 +222,14 @@ class AuthService
         $user->loadMissing('roles');
         $base = $user->toDemoUser();
         if (! $user->isBeneficiary()) {
+            // Optional fields are omitted when empty (front StaffUser: `expiresAt?: string`), never sent as null.
             $base += [
                 'email' => (string) $user->email, 'mobile' => $user->mobile, 'username' => (string) $user->username, 'jobTitle' => $user->job_title,
                 'roleIds' => $user->roleIds(), 'active' => $user->active, 'suspended' => $user->suspended, 'mfaEnabled' => $user->mfa_enabled,
                 'mustChangePassword' => $user->must_change_password, 'passwordChangedAt' => iso($user->password_changed_at),
                 'lastLoginAt' => iso($user->last_login_at), 'expiresAt' => iso($user->expires_at),
             ];
+            $base = array_filter($base, fn ($v) => $v !== null);
         }
 
         return [
@@ -201,6 +258,8 @@ class AuthService
             throw new DomainRuleException('لا يمكن تغيير كلمة المرور قبل مرور الحد الأدنى لعمرها.');
         }
         $this->setPassword($user, $next);
+        // A changed password must not leave other (possibly stolen) sessions alive; the current one stays.
+        Sessions::endAllFor($user, null, "تغيير كلمة المرور", Sessions::current()?->id);
         SecurityLog::log('PASSWORD_CHANGED', $user);
     }
 

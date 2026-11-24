@@ -42,6 +42,16 @@ class ProviderCatalogTest extends TestCase
         $this->asRole('beneficiary')->getJson('/api/v1/providers')->assertForbidden();
     }
 
+    public function test_provider_never_receives_the_staff_free_text_notes_of_its_own_record(): void
+    {
+        DB::table('providers')->where('id', 'PRV-0005')->update(['notes' => 'ملاحظة داخلية عن الأداء']);
+        $this->assertStringContainsString('ملاحظة داخلية عن الأداء', json_encode($this->asRole('manager')->getJson('/api/v1/providers/PRV-0005')->assertOk()->json('data'), JSON_UNESCAPED_UNICODE), 'staff keep the field');
+        foreach (['/api/v1/providers', '/api/v1/providers/PRV-0005'] as $url) {
+            $body = json_encode($this->asRole('provider')->getJson($url)->assertOk()->json(), JSON_UNESCAPED_UNICODE);
+            $this->assertStringNotContainsString('ملاحظة داخلية عن الأداء', $body, "$url leaks the internal notes");
+        }
+    }
+
     public function test_manager_creates_and_updates_provider(): void
     {
         $res = $this->asRole('manager')->postJson('/api/v1/providers', $this->payload(['logo' => self::LOGO]))->assertCreated();

@@ -11,9 +11,15 @@ class SettingsController extends Controller
 {
     public function __construct(private readonly SettingsService $settings) {}
 
-    public function organization(): JsonResponse
+    public function organization(Request $request): JsonResponse
     {
-        return response()->json(['data' => $this->settings->organization()]);
+        $org = $this->settings->organization();
+        // Signature and stamp images are staff-only (issued letters carry their own server-side snapshot).
+        if (! $request->user()?->isStaff()) {
+            unset($org['signatureImage'], $org['stampImage']);
+        }
+
+        return response()->json(['data' => $org]);
     }
 
     public function saveOrganization(Request $request): JsonResponse

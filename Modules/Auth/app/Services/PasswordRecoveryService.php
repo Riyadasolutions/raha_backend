@@ -5,6 +5,7 @@ namespace Modules\Auth\Services;
 use App\Exceptions\DomainRuleException;
 use App\Models\User;
 use App\Support\Security\SecurityLog;
+use App\Support\Security\Sessions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -47,6 +48,7 @@ class PasswordRecoveryService
         $user = User::query()->where('email', $email)->firstOrFail();
         $this->complete($user);
         $this->auth->setPassword($user, $password);
+        Sessions::endAllFor($user, null, "استعادة كلمة المرور");
         DB::table('password_reset_tokens')->where('email', $email)->delete();
         SecurityLog::log('PASSWORD_CHANGED', $user, details: ['note' => 'استعادة كلمة المرور']);
     }
@@ -58,13 +60,16 @@ class PasswordRecoveryService
         if (! $user) {
             return ['message' => self::NEUTRAL];
         }
+        if (\App\Support\Security\DevMode::sendLimitReached($user->id, 'password_reset')) {
+            return ['message' => self::NEUTRAL]; // neutral on purpose: no code is sent and the limit is not revealed
+        }
         $code = (string) random_int(100000, 999999);
         DB::table('otp_codes')->where('user_id', $user->id)->where('purpose', 'password_reset')->whereNull('used_at')->update(['used_at' => now()]);
         DB::table('otp_codes')->insert([
             'user_id' => $user->id, 'purpose' => 'password_reset', 'code_hash' => Hash::make($code), 'attempts' => 0,
             'expires_at' => now()->addMinutes((int) config('raha.otp.ttl_minutes')), 'created_at' => now(), 'updated_at' => now(),
         ]);
-        Log::info("[SMS] to {$user->mobile}: رمز استعادة كلمة المرور في راحة: {$code}");
+        \App\Support\Security\DevMode::sms((string) $user->mobile, 'رمز استعادة كلمة المرور في راحة', $code);
 
         return ['message' => self::NEUTRAL] + (config('raha.dev_accounts') ? ['debug' => $code] : []);
     }
@@ -82,6 +87,7 @@ class PasswordRecoveryService
         }
         $this->complete($user);
         $this->auth->setPassword($user, $password);
+        Sessions::endAllFor($user, null, "استعادة كلمة المرور");
         DB::table('otp_codes')->where('id', $otp->id)->update(['used_at' => now()]);
         SecurityLog::log('PASSWORD_CHANGED', $user, details: ['note' => 'استعادة كلمة المرور']);
     }

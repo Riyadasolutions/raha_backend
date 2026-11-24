@@ -49,6 +49,8 @@ class AuthController extends Controller
             'firstName' => ['required', 'string', 'max:60'], 'familyName' => ['required', 'string', 'max:60'],
             'idType' => ['required', 'string', \Illuminate\Validation\Rule::in(array_keys($types))], 'idNumber' => ['required', 'string', 'max:20'],
             'password' => ['required', 'string', 'max:200'],
+            // Ownership proof, only needed when the national id already belongs to a record held by the association.
+            'mobile' => ['nullable', 'string', 'max:20'], 'code' => ['nullable', 'string', 'max:10'],
         ], ['required' => 'أكمل الحقول المطلوبة.', 'idType.in' => 'نوع الهوية غير صحيح.']);
         $rule = $types[$data['idType']];
         if (! preg_match('/'.$rule['pattern'].'/', mb_strtoupper(trim($data['idNumber'])))) {

@@ -29,6 +29,9 @@ class RahaCase extends Model
 
     protected array $frontHidden = ['return_history'];
 
+    /** Maps typed as Record<string,string> in the frontend: JSON objects even when empty. */
+    protected array $frontObjects = ['medical', 'social'];
+
     protected function casts(): array
     {
         return [

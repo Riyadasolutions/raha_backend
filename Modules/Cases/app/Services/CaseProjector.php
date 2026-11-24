@@ -4,6 +4,7 @@ namespace Modules\Cases\Services;
 
 use App\Models\User;
 use App\Support\Permissions\PermissionResolver;
+use App\Support\Text;
 use Modules\Cases\Models\CaseActivity;
 use Modules\Cases\Models\CaseComment;
 use Modules\Cases\Models\CaseDocument;
@@ -14,9 +15,9 @@ use Modules\Finance\Models\FinancialApproval;
 /** Audience projections of a case: staff (tab-filtered), provider (service view), beneficiary (portal view). */
 class CaseProjector
 {
-    /** Keys a provider may ever receive (overview, medical, service). Never verificationCode, social, workflow, notes, finance. */
+    /** Keys a provider may ever receive (overview, medical, service). Never nationalId, verificationCode, social, workflow, notes, finance. */
     private const PROVIDER_KEYS = [
-        'id', 'beneficiaryId', 'beneficiary', 'nationalId', 'mobile', 'city', 'service', 'serviceId', 'subservice', 'description', 'medical',
+        'id', 'beneficiaryId', 'beneficiary', 'mobile', 'city', 'service', 'serviceId', 'subservice', 'description', 'medical',
         'date', 'createdAt', 'updatedAt', 'updated', 'stage', 'status', 'priority', 'provider', 'providerId', 'providerAccepted', 'assignedAt',
         'assignmentType', 'appointment', 'invoice', 'visitPlan', 'serviceConfirmed',
     ];
@@ -43,6 +44,18 @@ class CaseProjector
     public function forStaff(RahaCase $c, User $user, bool $light = false): array
     {
         $out = $c->toFront();
+        // Same rule as /beneficiaries: identity and contact are masked unless beneficiaries.viewSensitive is granted.
+        if (! $this->perms->has($user, 'beneficiaries.viewSensitive')) {
+            foreach (['nationalId', 'mobile'] as $k) {
+                if (isset($out[$k])) {
+                    $out[$k] = Text::mask((string) $out[$k]);
+                }
+            }
+            if (isset($out['applicant']['mobile'])) {
+                $out['applicant']['mobile'] = Text::mask((string) $out['applicant']['mobile']);
+            }
+            $out['masked'] = true;
+        }
         $out['tasks'] = $c->tasks->map(fn (CaseTask $t) => TaskService::taskFront($t))->values()->all();
         $tab = fn (string $t) => $this->access->canAccessCaseTab($user, $t);
         if (! $tab('المعلومات الطبية')) {
@@ -72,19 +85,67 @@ class CaseProjector
         return array_filter($out, fn ($v) => $v !== null);
     }
 
-    public static function providerVisible(CaseDocument $d): bool
+    /**
+     * Medical fields an assigned provider may receive. Only the health condition is service-relevant by default;
+     * diagnosis, facility, doctor, report date and any other key stay internal (see the open business decision in the Phase 4 report).
+     */
+    public const PROVIDER_MEDICAL_FIELDS = ['condition'];
+
+    /** Statuses in which the assigned provider delivers the service; medical data and documents are shared only then. */
+    public const PROVIDER_EXECUTION_STATUSES = ['assigned', 'scheduled', 'in_progress'];
+
+    public static function providerExecutionWindow(RahaCase $c): bool
     {
+        return in_array($c->status, self::PROVIDER_EXECUTION_STATUSES, true);
+    }
+
+    public static function providerVisible(CaseDocument $d, ?RahaCase $c = null): bool
+    {
+        $c ??= $d->case ?? null;
+        if ($c && ! self::providerExecutionWindow($c)) {
+            return false;
+        }
         $types = \Modules\Cases\Services\Requirements\RequirementsEngine::docTypes();
         $type = $d->doc_type ?? collect($types)->firstWhere('label', $d->category)['id'] ?? null;
 
         return ! empty($types[$type ?? '']['providerVisible']) && $d->visibility !== 'internal';
     }
 
+    public const STAFF_UPLOADER = 'جمعية راحة';
+
+    public const BENEFICIARY_UPLOADER = 'المستفيد';
+
+    /**
+     * Document metadata for the assigned provider: everything needed to list and download it, but never the name of an internal employee
+     * (or of the beneficiary's account) as the uploader. Staff uploads show "جمعية راحة", beneficiary uploads "المستفيد"; a provider sees its own name.
+     */
+    private static function forProviderDocument(CaseDocument $d, RahaCase $c, ?User $viewer): array
+    {
+        $out = $d->toFront();
+        $type = $d->uploaded_by_id ? User::query()->whereKey($d->uploaded_by_id)->value('account_type') : null;
+        $type = $type instanceof \BackedEnum ? $type->value : $type;
+        $label = match (true) {
+            $viewer && $d->uploaded_by_id && $d->uploaded_by_id === $viewer->id => $d->uploaded_by,
+            $type === 'PROVIDER' => $d->uploaded_by,
+            $type === 'BENEFICIARY' => self::BENEFICIARY_UPLOADER,
+            $type === 'STAFF' => self::STAFF_UPLOADER,
+            // Seeded/legacy rows without an uploader id: a name that matches the request's own people is the beneficiary, anything else is staff.
+            default => in_array($d->uploaded_by, array_filter([$c->beneficiary, $c->account_owner_name, $c->applicant['name'] ?? null, $c->recipient['fullName'] ?? null]), true) ? self::BENEFICIARY_UPLOADER : self::STAFF_UPLOADER,
+        };
+        $out['uploadedBy'] = $label;
+
+        return $out;
+    }
+
     public function forProvider(RahaCase $c, ?User $user = null): array
     {
         $full = $c->toFront();
         $out = array_intersect_key($full, array_flip(self::PROVIDER_KEYS));
-        $out['documents'] = $c->documents->filter(fn (CaseDocument $d) => self::providerVisible($d))->map->toFront()->values()->all();
+        unset($out['medical']);
+        if (self::providerExecutionWindow($c) && ($medical = array_intersect_key((array) ($full['medical'] ?? []), array_flip(self::PROVIDER_MEDICAL_FIELDS)))) {
+            $out['medical'] = $medical;
+        }
+        $out['documents'] = $c->documents->filter(fn (CaseDocument $d) => self::providerVisible($d, $c))->map(fn (CaseDocument $d) => self::forProviderDocument($d, $c, $user))->values()->all();
         if ($user) {
             $out['availableActions'] = array_column($this->actions->actionsForCase($c, $user), 'key');
         }

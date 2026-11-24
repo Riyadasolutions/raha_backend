@@ -13,6 +13,7 @@ use Modules\Cases\Models\CaseReview;
 use Modules\Cases\Models\RahaCase;
 use Modules\Catalog\Models\Provider;
 use Modules\Finance\Models\FinanceConfig;
+use Modules\Finance\Services\SettlementService;
 
 /**
  * Workflow transitions (port of front caseService.perform). PUBLIC API for other modules:
@@ -43,11 +44,20 @@ class WorkflowService
         return DB::transaction(function () use ($caseId, $key, $user, $p) {
             $action = WorkflowConfig::action($key);
             $c = RahaCase::query()->lockForUpdate()->find($caseId);
+            if ($c) {
+                $c->load(['tasks', 'documents']);
+            }
+            $hasAccess = $c && $this->access->canAccessCase($c, $user);
+            // External accounts (providers, beneficiaries) get ONE answer whether the request exists, is theirs, or is in another
+            // state, so the endpoint cannot be used to probe which ids exist or what stage they are in. Staff keep the finer messages
+            // (e.g. "action not available for this state" after a double submit).
+            if (! $hasAccess && ! $user->isStaff()) {
+                throw DomainRuleException::forbidden('لا تملك صلاحية الوصول إلى هذا الطلب.');
+            }
             if (! $action || ! $c || $c->status !== $action['from']) {
                 throw new DomainRuleException('الإجراء غير متاح لهذه الحالة.');
             }
-            $c->load(['tasks', 'documents']);
-            if (! $this->access->canAccessCase($c, $user)) {
+            if (! $hasAccess) {
                 throw DomainRuleException::forbidden('لا تملك صلاحية الوصول إلى هذا الطلب.');
             }
             if ($user->isBeneficiary() || (WorkflowConfig::reviewStageOf($c->status) && ! $user->isStaff())) {
@@ -77,6 +87,9 @@ class WorkflowService
             CaseAccess::assertMutable($c);
             if ($key === 'complete_service') {
                 VisitGuard::assertVisitsComplete($c);
+            }
+            if ($key === 'finance_complete') {
+                app(SettlementService::class)->assertReconciled($c); // before any irreversible transition
             }
             $this->validator->validateDecision($action, $c, $p);
             if ($key === 'care_approve' && $c->quotation_required && ! $c->preferred_quotation) {
@@ -165,6 +178,10 @@ class WorkflowService
         }
         if ($key === 'finance_complete' && $c->invoice) {
             $c->invoice = array_merge($c->invoice, ['status' => 'paid']);
+        }
+        if ($key === 'finance_complete') {
+            // Approved settlement rule: confirmed payment turns the request's commitments into actual wallet deductions, in this same transaction.
+            app(SettlementService::class)->settle($c, $user);
         }
         if ($key === 'complete_service' && $c->appointment) {
             $c->appointment = array_merge($c->appointment, ['status' => 'visited']);

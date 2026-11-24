@@ -159,7 +159,7 @@ class DocumentService
         $doc = CaseDocument::query()->where('case_id', $c->id)->find($docId);
         $allowed = $doc && match (true) {
             $user->isBeneficiary() => $doc->visibility !== 'internal' && ! $doc->superseded,
-            $user->isProvider() => ! $doc->superseded && CaseProjector::providerVisible($doc),
+            $user->isProvider() => ! $doc->superseded && CaseProjector::providerVisible($doc, $c),
             default => $this->access->canAccessCaseTab($user, 'المستندات'),
         };
         if (! $allowed) {

@@ -309,7 +309,7 @@ class AuthorizationService
             $letter = $letters[$s->authorization_id] ?? null;
 
             return $s->toFront() + [
-                'letter' => $letter ? array_diff_key($letter->toFront(), array_flip(['financialApprovalId', 'approvalRef'])) : null,
+                'letter' => $letter ? array_diff_key($letter->toFront(), array_flip(['financialApprovalId', 'approvalRef', 'issuedBy', 'closedBy', 'closedReason'])) : null,
                 'visit' => $plan ? array_filter(['deliveryType' => $plan['deliveryType'] ?? null, 'approvedVisitCount' => ($plan['approvedVisitCount'] ?? null) ?: null], fn ($v) => $v !== null) : null,
                 'service' => $cases[$s->case_id]->service ?? null,
             ];

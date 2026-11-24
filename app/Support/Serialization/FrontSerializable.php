@@ -29,6 +29,10 @@ trait FrontSerializable
             } elseif (is_array($raw)) {
                 $value = $raw;
             }
+            // Maps the frontend types as Record<string, …> must stay JSON objects when empty (PHP would encode [] as a list).
+            if ($value === [] && in_array($key, property_exists($this, 'frontObjects') ? $this->frontObjects : [], true)) {
+                $value = new \stdClass;
+            }
             $out[$renames[$key] ?? Str::camel($key)] = $value;
         }
 

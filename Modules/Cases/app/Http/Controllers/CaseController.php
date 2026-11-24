@@ -76,7 +76,12 @@ class CaseController extends Controller
 
     public function timeline(Request $request, string $id): JsonResponse
     {
-        return response()->json(['data' => $this->cases->timeline($id, $request->user())->map(fn (CaseActivity $a) => $a->toFront())->values()]);
+        $user = $request->user();
+        // Non-staff audiences get a whitelist only (no actor ids, stage transitions or internal reasons); beneficiaries already did via CaseProjector.
+        $keep = array_flip(['id', 'at', 'text', 'actor', 'visibility']);
+
+        return response()->json(['data' => $this->cases->timeline($id, $user)
+            ->map(fn (CaseActivity $a) => $user->isStaff() ? $a->toFront() : array_intersect_key($a->toFront(), $keep))->values()]);
     }
 
     public function comment(Request $request, string $id): JsonResponse

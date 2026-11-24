@@ -45,7 +45,7 @@ class Provider extends Model
     {
         $out = $this->baseFront();
         $out['contact'] = $this->contact ?? ['name' => '', 'mobile' => '', 'email' => ''];
-        $out['notes'] = (string) $this->notes;
+        $out['notes'] = $internal ? (string) $this->notes : '';
         $out['services'] = $this->services->map(fn (Service $s) => ['serviceId' => $s->id, 'addedAt' => iso($s->pivot->added_at)])->values()->all();
         $out['internalNotes'] = $internal ? $this->internalNotes->map(fn ($n) => ['id' => $n->id, 'at' => iso($n->at), 'text' => $n->text, 'author' => $n->author])->values()->all() : [];
 

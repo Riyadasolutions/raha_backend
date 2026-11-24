@@ -27,7 +27,9 @@ class CaseService
             $cases = $cases->where('status', '!=', 'archived');
         }
         if (($q = trim((string) ($f['q'] ?? ''))) !== '') {
-            $cases = $cases->filter(fn (RahaCase $c) => str_contains("{$c->id} {$c->beneficiary} {$c->service} {$c->national_id}", $q));
+            // The national id is only searchable by staff who may see it (otherwise search would reveal it by probing).
+            $sensitive = $user->isStaff() && $this->perms->has($user, 'beneficiaries.viewSensitive');
+            $cases = $cases->filter(fn (RahaCase $c) => str_contains("{$c->id} {$c->beneficiary} {$c->service}".($sensitive ? " {$c->national_id}" : ''), $q));
         }
         if (! empty($f['from'])) {
             $cases = $cases->filter(fn (RahaCase $c) => $c->created_at->toDateString() >= $f['from']);

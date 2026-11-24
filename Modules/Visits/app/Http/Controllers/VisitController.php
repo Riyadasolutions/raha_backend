@@ -23,9 +23,9 @@ class VisitController extends Controller
 
     public function __construct(private VisitPlanService $plans, private VisitService $visits, private VisitMonitoringService $monitoring) {}
 
-    private function withProgress(VisitRecord $v): JsonResponse
+    private function withProgress(VisitRecord $v, Request $request): JsonResponse
     {
-        return response()->json(['data' => $v->toFront(), 'progress' => VisitService::completionState(RahaCase::query()->findOrFail($v->case_id))]);
+        return response()->json(['data' => $v->toFrontFor($request->user()), 'progress' => VisitService::completionState(RahaCase::query()->findOrFail($v->case_id))]);
     }
 
     public function plan(Request $request, string $id): JsonResponse
@@ -45,14 +45,14 @@ class VisitController extends Controller
         $c = $this->visits->adjustApprovedVisitCount($id, $request->input('newCount'), $d['reason'] ?? null, $user, $d['resolution'] ?? null);
         $list = $this->visits->forCase($c->id, $user);
 
-        return response()->json(['data' => ['visitPlan' => $c->visit_plan, 'visits' => $list['visits']->map->toFront()->values(), 'progress' => $list['progress']]]);
+        return response()->json(['data' => ['visitPlan' => $c->visit_plan, 'visits' => $list['visits']->map(fn ($v) => $v->toFrontFor($user))->values(), 'progress' => $list['progress']]]);
     }
 
     public function index(Request $request, string $id): JsonResponse
     {
         $r = $this->visits->forCase($id, $request->user());
 
-        return response()->json(['data' => $r['visits']->map->toFront()->values(), 'approvedVisitCount' => $r['approvedVisitCount'], 'progress' => $r['progress']]);
+        return response()->json(['data' => $r['visits']->map(fn ($v) => $v->toFrontFor($request->user()))->values(), 'approvedVisitCount' => $r['approvedVisitCount'], 'progress' => $r['progress']]);
     }
 
     public function schedule(Request $request, string $id): JsonResponse
@@ -64,28 +64,28 @@ class VisitController extends Controller
         }
         $v = $this->visits->schedule($id, $input, $request->user());
 
-        return $this->withProgress($v)->setStatusCode(201);
+        return $this->withProgress($v, $request)->setStatusCode(201);
     }
 
     public function complete(Request $request, string $visitId): JsonResponse
     {
         $d = $request->validate(['completedAt' => ['nullable', 'string', 'max:64'], 'notes' => ['nullable', 'string', 'max:4000'], 'evidence' => ['nullable', 'string', 'max:500']], self::MESSAGES);
 
-        return $this->withProgress($this->visits->complete($visitId, $d, $request->user()));
+        return $this->withProgress($this->visits->complete($visitId, $d, $request->user()), $request);
     }
 
     public function miss(Request $request, string $visitId): JsonResponse
     {
         $d = $request->validate(['reason' => ['nullable', 'string', 'max:2000']], self::MESSAGES);
 
-        return $this->withProgress($this->visits->markMissed($visitId, $d['reason'] ?? null, $request->user()));
+        return $this->withProgress($this->visits->markMissed($visitId, $d['reason'] ?? null, $request->user()), $request);
     }
 
     public function cancel(Request $request, string $visitId): JsonResponse
     {
         $d = $request->validate(['reason' => ['nullable', 'string', 'max:2000']], self::MESSAGES);
 
-        return $this->withProgress($this->visits->cancel($visitId, $d['reason'] ?? null, $request->user()));
+        return $this->withProgress($this->visits->cancel($visitId, $d['reason'] ?? null, $request->user()), $request);
     }
 
     public function correct(Request $request, string $visitId): JsonResponse
@@ -99,12 +99,12 @@ class VisitController extends Controller
             $patch['notes'] = (string) ($d['notes'] ?? ''); // present-but-empty clears the notes (front: patch.notes !== undefined)
         }
 
-        return $this->withProgress($this->visits->correct($visitId, $patch, $d['reason'] ?? null, $request->user()));
+        return $this->withProgress($this->visits->correct($visitId, $patch, $d['reason'] ?? null, $request->user()), $request);
     }
 
     public function providerVisits(Request $request): JsonResponse
     {
-        return response()->json(['data' => $this->visits->forProvider($request->user())->map->toFront()->values()]);
+        return response()->json(['data' => $this->visits->forProvider($request->user())->map(fn ($v) => $v->toFrontFor($request->user()))->values()]);
     }
 
     public function monitoring(Request $request): JsonResponse

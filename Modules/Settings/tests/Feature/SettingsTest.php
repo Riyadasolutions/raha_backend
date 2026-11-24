@@ -26,6 +26,16 @@ class SettingsTest extends TestCase
         $this->putJson('/api/v1/settings/organization', ['logo' => null])->assertOk()->assertJsonMissingPath('data.logo');
     }
 
+    public function test_signature_and_stamp_images_are_staff_only(): void
+    {
+        $this->asRole('admin')->putJson('/api/v1/settings/organization', ['signatureImage' => self::PNG, 'stampImage' => self::PNG, 'logo' => self::PNG])->assertOk();
+        $this->asRole('auditor')->getJson('/api/v1/settings/organization')->assertOk()->assertJsonPath('data.signatureImage', self::PNG)->assertJsonPath('data.stampImage', self::PNG);
+        foreach (['provider', 'beneficiary'] as $role) {
+            $this->asRole($role)->getJson('/api/v1/settings/organization')->assertOk()
+                ->assertJsonMissingPath('data.signatureImage')->assertJsonMissingPath('data.stampImage')->assertJsonPath('data.nameAr', 'جمعية راحة');
+        }
+    }
+
     public function test_language_public_read_and_admin_save(): void
     {
         $this->getJson('/api/v1/settings/language')->assertOk()->assertJsonPath('data.defaultLang', 'ar');

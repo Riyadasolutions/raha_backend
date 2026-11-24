@@ -20,6 +20,9 @@ class CaseReview extends Model
 
     protected $guarded = [];
 
+    /** Serialized as JSON objects even when empty (front ReviewRecord.fields is Record<string,string>). */
+    protected array $frontObjects = ['fields'];
+
     /** Millisecond precision: correction rules compare document and return timestamps. */
     protected $dateFormat = 'Y-m-d H:i:s.v';
 

@@ -119,7 +119,7 @@ class SubmissionDocumentsTest extends CasesTestCase
         $this->get("/api/v1/portal/requests/$id/documents/$docId/download")->assertOk();
         $this->get("/api/v1/portal/requests/$id/documents/$internal/download")->assertNotFound();
         $this->get("/api/v1/portal/requests/REQ-000123/documents/REQ-000123-d1/download")->assertNotFound();
-        RahaCase::whereKey($id)->update(['provider_id' => 'PRV-0005']);
+        RahaCase::whereKey($id)->update(['provider_id' => 'PRV-0005', 'status' => 'assigned']);
         $this->asRole('provider')->get("/api/v1/cases/$id/documents/$docId/download")->assertOk();
         $this->get("/api/v1/cases/$id/documents/$internal/download")->assertNotFound();
         $this->asRole('provider2')->get("/api/v1/cases/$id/documents/$docId/download")->assertNotFound();

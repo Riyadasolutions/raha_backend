@@ -19,6 +19,20 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Demo accounts share a known password (demo1234): the seeder refuses to run anywhere dev mode is off (production, staging, unknown env).
+        if (! config('raha.dev_accounts')) {
+            throw new \RuntimeException('DatabaseSeeder seeds demo accounts with a published password and runs only when dev mode is on (APP_ENV=local/testing and RAHA_DEV_ACCOUNTS). Use a dedicated production seeder.');
+        }
+
+        // Repeatable: the whole seed runs in one transaction, so the first seed role marks a completed seed.
+        // When it already exists nothing is inserted, updated or deleted (never overwrites existing data).
+        $first = Raha::get('rbac.roles')[0]['id'] ?? null;
+        if ($first !== null && DB::table('roles')->where('id', $first)->exists()) {
+            $this->command?->info('Demo dataset already seeded; skipping (no data changed).');
+
+            return;
+        }
+
         DB::transaction(function () {
             $this->rbac();
             $this->settings();

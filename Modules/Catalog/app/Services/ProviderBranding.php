@@ -11,8 +11,8 @@ class ProviderBranding
 
     public static function isSafeLogo(mixed $v): bool
     {
-        return is_string($v) && strlen($v) <= self::MAX_LOGO_CHARS
-            && preg_match('#^data:image/(?:png|jpeg);base64,[A-Za-z0-9+/]+={0,2}$#', $v) === 1;
+        // Same rule as the organization images: size, data-URI shape AND the real image signature.
+        return \Modules\Settings\Services\SettingsService::isSafeLogo($v);
     }
 
     /** Branding captured when a quotation is submitted (front snapshotBranding). */
